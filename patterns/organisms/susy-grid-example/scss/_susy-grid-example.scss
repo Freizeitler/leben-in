@@ -1,0 +1,48 @@
+// Set global defaults for susy (http://susydocs.oddbird.net/en/latest/settings/, Tut. https://www.smashingmagazine.com/2015/07/smarter-grids-with-sass-and-susy/):
+$susy: (
+  flow: ltr,
+  math: fluid,
+  output: float,
+  gutter-position: after,
+  container: auto,
+  container-position: center,
+  columns: 12,
+  gutters: .25,
+  column-width: false,
+  global-box-sizing: content-box,
+  last-flow: to,
+  debug: (
+    image: hide,
+    color: rgba(#66f, .25),
+    output: background,
+    toggle: top right,
+  ),
+  use-custom: (
+    background-image: true,
+    background-options: false,
+    box-sizing: true,
+    clearfix: false,
+    rem: true,
+  )
+);
+
+@mixin susy-grid-example() {
+  @include container();
+  position: relative;
+  border: 1px solid #eee;
+
+  &__item {
+    @include span(12);
+    min-height: 100px;
+    background: #fff;
+
+    @include susy-breakpoint(480px) {
+      @include gallery(3);
+    }
+
+    > p {
+      background: #eee;
+      padding: gutter(2);
+    }
+  }
+}

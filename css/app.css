@@ -1,0 +1,50 @@
+/**
+* Settings
+*
+* @desc Place variables and mixings for default settings here
+* @author [XX]
+* @dependency none
+*/
+/** Easings, grabbed from https://css-tricks.com/snippets/sass/easing-map-get-function/
+ *
+ * Example function call:
+	.example {
+	  animation: there-and-back 2.5s ease(in-quad) infinite alternate;
+	}
+**/
+/**
+* Helper
+*
+* @desc Helper are classes and formattings which are used to accomplish repeating task. Mainly we use ds- for design-task and bv- for behavioral tasks.
+* @author [XX]
+* @dependency _app_settings.scss
+*/
+/* line 11, ../scss/_helper.scss */
+.bv-cf:before, .bv-cf:after {
+  content: " ";
+  display: table;
+}
+/* line 17, ../scss/_helper.scss */
+.bv-cf:after {
+  clear: both;
+}
+
+/* line 19, ../scss/_helper.scss */
+.bv-float-left {
+  float: left;
+}
+
+/* line 20, ../scss/_helper.scss */
+.bv-float-right {
+  float: right;
+}
+
+/**
+* Basic Styles
+*
+* @desc Basic and common styles. Formats for every device live in Common Styles, for device-specific stylings use Mobile First approach.
+* @author [XX]
+* @dependency _app_settingsscss
+*/
+
+/*# sourceMappingURL=app.css.map */
