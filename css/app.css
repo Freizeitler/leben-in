@@ -13,38 +13,114 @@
 	}
 **/
 /**
-* Helper
-*
-* @desc Helper are classes and formattings which are used to accomplish repeating task. Mainly we use ds- for design-task and bv- for behavioral tasks.
-* @author [XX]
-* @dependency _app_settings.scss
-*/
-/* line 11, ../scss/_helper.scss */
-.bv-cf:before, .bv-cf:after {
-  content: " ";
-  display: table;
-}
-/* line 17, ../scss/_helper.scss */
-.bv-cf:after {
-  clear: both;
-}
-
-/* line 19, ../scss/_helper.scss */
-.bv-float-left {
-  float: left;
-}
-
-/* line 20, ../scss/_helper.scss */
-.bv-float-right {
-  float: right;
-}
-
-/**
 * Basic Styles
 *
 * @desc Basic and common styles. Formats for every device live in Common Styles, for device-specific stylings use Mobile First approach.
-* @author [XX]
-* @dependency _app_settingsscss
+* @author [HZ]
+* @dependency _app_settings.scss
 */
+/* line 10, ../scss/_base.scss */
+body, html {
+  margin: 0;
+  height: 100%;
+  font: normal 1em/1.4 sans-serif;
+  color: #1e1e1e;
+}
+
+/* line 16, ../scss/_base.scss */
+body {
+  padding: 0 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* line 22, ../scss/_base.scss */
+h1, h2 {
+  margin: 0;
+  font-weight: normal;
+}
+
+/* line 29, ../scss/_base.scss */
+label:hover {
+  cursor: pointer;
+}
+
+/* line 34, ../scss/_base.scss */
+.main {
+  padding-top: 20px;
+  min-width: 400vw;
+  height: 100%;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 1, ../patterns/organisms/header/scss/_header.scss */
+.header {
+  background-color: #031633;
+  height: 80px;
+  width: 400vw;
+  color: white;
+  padding: 0 20px;
+  margin-left: -20px;
+  margin-right: -20px;
+  position: absolute;
+  box-sizing: border-box;
+}
+
+/* line 1, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+.menu-category {
+  color: white;
+  margin-top: 40px;
+  position: relative;
+  z-index: 2;
+  padding: 10px;
+  display: inline-block;
+}
+/* line 11, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+.menu-category:checked + label {
+  background: white;
+  color: #031633;
+}
+/* line 19, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+.menu-category:nth-of-type(1):checked ~ .main {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+/* line 26, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+.menu-category:nth-of-type(2):checked ~ .main {
+  -webkit-transform: translate3d(-100vw, 0, 0);
+          transform: translate3d(-100vw, 0, 0);
+}
+/* line 33, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+.menu-category:nth-of-type(3):checked ~ .main {
+  -webkit-transform: translate3d(-200vw, 0, 0);
+          transform: translate3d(-200vw, 0, 0);
+}
+/* line 40, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+.menu-category:nth-of-type(4):checked ~ .main {
+  -webkit-transform: translate3d(-300vw, 0, 0);
+          transform: translate3d(-300vw, 0, 0);
+}
+
+/* line 46, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+input.menu-category {
+  position: absolute;
+  z-index: -1;
+}
+
+/* line 1, ../patterns/organisms/category-section/scss/_category-section.scss */
+.category-section {
+  height: 100%;
+  width: 100vw;
+}
+/* line 5, ../patterns/organisms/category-section/scss/_category-section.scss */
+.category-section__headline {
+  padding: 5px 20px;
+  margin-left: -20px;
+  background: #a8a7a7;
+}
 
 /*# sourceMappingURL=app.css.map */

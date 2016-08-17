@@ -1,0 +1,10 @@
+.category-section {
+  height: 100%;
+  width: 100vw;
+
+  &__headline {
+    padding: 5px $spacing-hard;
+    margin-left: -$spacing-hard;
+    background: $color-gray;
+  }
+}

@@ -2,12 +2,43 @@
 * Basic Styles
 *
 * @desc Basic and common styles. Formats for every device live in Common Styles, for device-specific stylings use Mobile First approach.
-* @author [XX]
-* @dependency _app_settingsscss
+* @author [HZ]
+* @dependency _app_settings.scss
 */
 
 // Common Styles
-body { }
+body, html {
+  margin: 0;
+  height: 100%;
+  @include font-text;
+}
+
+body {
+  padding: 0 $spacing-hard;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+h1, h2 {
+  margin: 0;
+  font-weight: normal;
+}
+
+label {
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.main {
+  padding-top: $spacing-hard;
+  min-width: 400vw;
+  height: 100%;
+  transition: transform 0.3s;
+  display: flex;
+}
+
 
 // Media Queries (from min to max)
 @media (min-width: $breakpoint-min) { }

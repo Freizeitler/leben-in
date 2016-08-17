@@ -1,0 +1,49 @@
+.menu-category {
+  color: $color-light;
+  margin-top: $spacing-hard * 2;
+  position: relative;
+  z-index: 2;
+  padding: $spacing-hard / 2;
+  display: inline-block;
+
+  &:checked {
+
+    & + label {
+      background: $color-light;
+      color: $color-dark;
+    }
+  }
+
+  &:nth-of-type(1):checked {
+
+    & ~ .main {
+      transform: translate3d(0,0,0);
+    }
+  }
+
+  &:nth-of-type(2):checked {
+
+    & ~ .main {
+      transform: translate3d(-100vw,0,0);
+    }
+  }
+
+  &:nth-of-type(3):checked {
+
+    & ~ .main {
+      transform: translate3d(-200vw,0,0);
+    }
+  }
+
+  &:nth-of-type(4):checked {
+
+    & ~ .main {
+      transform: translate3d(-300vw,0,0);
+    }
+  }
+}
+
+input.menu-category {
+   position: absolute;
+   z-index: -1;
+ }
