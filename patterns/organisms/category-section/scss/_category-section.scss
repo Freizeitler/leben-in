@@ -13,6 +13,26 @@
 
 .menu-category-filter {
   margin: $spacing-hard 0 0 $spacing-hard;
+
+  &:checked  ~ .teaser-section .teaser-section__teaser {
+    display: none;
+  }
+
+  &[data-filter=one]:checked ~ .teaser-section .teaser-section__teaser[data-tag=one] {
+    display: block;
+  }
+
+  &[data-filter=two]:checked ~ .teaser-section .teaser-section__teaser[data-tag=two] {
+    display: block;
+  }
+
+  &[data-filter=three]:checked ~ .teaser-section .teaser-section__teaser[data-tag=three] {
+    display: block;
+  }
+
+  &[data-filter=four]:checked ~ .teaser-section .teaser-section__teaser[data-tag=four] {
+    display: block;
+  }
 }
 
 .teaser-section {
