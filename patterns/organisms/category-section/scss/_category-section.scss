@@ -15,23 +15,17 @@
   margin: $spacing-hard 0 0 $spacing-hard;
 
   &:checked  ~ .teaser-section .teaser-section__teaser {
-    display: none;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    max-height: 0;
   }
 
-  &[data-filter=one]:checked ~ .teaser-section .teaser-section__teaser[data-tag=one] {
-    display: block;
-  }
-
-  &[data-filter=two]:checked ~ .teaser-section .teaser-section__teaser[data-tag=two] {
-    display: block;
-  }
-
-  &[data-filter=three]:checked ~ .teaser-section .teaser-section__teaser[data-tag=three] {
-    display: block;
-  }
-
-  &[data-filter=four]:checked ~ .teaser-section .teaser-section__teaser[data-tag=four] {
-    display: block;
+  &[data-filter=one]:checked ~ .teaser-section .teaser-section__teaser[data-tag=one], &[data-filter=two]:checked ~ .teaser-section .teaser-section__teaser[data-tag=two], &[data-filter=three]:checked ~ .teaser-section .teaser-section__teaser[data-tag=three], &[data-filter=four]:checked ~ .teaser-section .teaser-section__teaser[data-tag=four] {
+    max-height: 150px;
+    opacity: 1;
+    margin: $spacing-hard/2 0;
+    padding: $spacing-hard;
   }
 }
 
@@ -39,12 +33,16 @@
   display: flex;
   flex-direction: column;
   margin: $spacing-hard;
+  overflow: hidden;
 
   &__teaser {
     margin: $spacing-hard/2 0;
     padding: $spacing-hard;
     border: 1px solid $color-gray-light;
     display: flex;
+    max-height: 150px;
+    transition: all 0.2s;
+    overflow: hidden;
   }
 
   &__text {

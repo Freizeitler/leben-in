@@ -78,35 +78,35 @@ label:hover {
   display: inline-block;
 }
 /* line 12, ../patterns/organisms/menu-category/scss/_menu-category.scss */
-.menu-category:checked + label {
-  background: white;
-  color: #031633;
-}
-/* line 20, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category:nth-of-type(1):checked ~ .main {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
-/* line 27, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 19, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category:nth-of-type(2):checked ~ .main {
   -webkit-transform: translate3d(-100vw, 0, 0);
           transform: translate3d(-100vw, 0, 0);
 }
-/* line 34, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 26, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category:nth-of-type(3):checked ~ .main {
   -webkit-transform: translate3d(-200vw, 0, 0);
           transform: translate3d(-200vw, 0, 0);
 }
-/* line 41, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 33, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category:nth-of-type(4):checked ~ .main {
   -webkit-transform: translate3d(-300vw, 0, 0);
           transform: translate3d(-300vw, 0, 0);
 }
 
-/* line 47, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 39, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 input.menu-category {
   position: absolute;
   z-index: -1;
+}
+/* line 45, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+input.menu-category:checked + label, input.menu-category:focus + label {
+  background: white;
+  color: #031633;
 }
 
 /* line 1, ../patterns/organisms/category-section/scss/_category-section.scss */
@@ -129,26 +129,20 @@ input.menu-category {
 }
 /* line 17, ../patterns/organisms/category-section/scss/_category-section.scss */
 .menu-category-filter:checked ~ .teaser-section .teaser-section__teaser {
-  display: none;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
 }
-/* line 21, ../patterns/organisms/category-section/scss/_category-section.scss */
-.menu-category-filter[data-filter=one]:checked ~ .teaser-section .teaser-section__teaser[data-tag=one] {
-  display: block;
-}
-/* line 25, ../patterns/organisms/category-section/scss/_category-section.scss */
-.menu-category-filter[data-filter=two]:checked ~ .teaser-section .teaser-section__teaser[data-tag=two] {
-  display: block;
-}
-/* line 29, ../patterns/organisms/category-section/scss/_category-section.scss */
-.menu-category-filter[data-filter=three]:checked ~ .teaser-section .teaser-section__teaser[data-tag=three] {
-  display: block;
-}
-/* line 33, ../patterns/organisms/category-section/scss/_category-section.scss */
-.menu-category-filter[data-filter=four]:checked ~ .teaser-section .teaser-section__teaser[data-tag=four] {
-  display: block;
+/* line 24, ../patterns/organisms/category-section/scss/_category-section.scss */
+.menu-category-filter[data-filter=one]:checked ~ .teaser-section .teaser-section__teaser[data-tag=one], .menu-category-filter[data-filter=two]:checked ~ .teaser-section .teaser-section__teaser[data-tag=two], .menu-category-filter[data-filter=three]:checked ~ .teaser-section .teaser-section__teaser[data-tag=three], .menu-category-filter[data-filter=four]:checked ~ .teaser-section .teaser-section__teaser[data-tag=four] {
+  max-height: 150px;
+  opacity: 1;
+  margin: 10px 0;
+  padding: 20px;
 }
 
-/* line 38, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 32, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -157,8 +151,9 @@ input.menu-category {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 20px;
+  overflow: hidden;
 }
-/* line 43, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 38, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__teaser {
   margin: 10px 0;
   padding: 20px;
@@ -166,8 +161,11 @@ input.menu-category {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  max-height: 150px;
+  transition: all 0.2s;
+  overflow: hidden;
 }
-/* line 50, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 48, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__text {
   padding-left: 20px;
 }

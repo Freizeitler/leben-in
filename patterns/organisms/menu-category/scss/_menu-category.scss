@@ -7,14 +7,6 @@
   padding: $spacing-hard / 2;
   display: inline-block;
 
-  &:checked {
-
-    & + label {
-      background: $color-light;
-      color: $color-dark;
-    }
-  }
-
   &:nth-of-type(1):checked {
 
     & ~ .main {
@@ -47,4 +39,12 @@
 input.menu-category {
    position: absolute;
    z-index: -1;
+
+   &:checked, &:focus {
+
+     & + label {
+       background: $color-light;
+       color: $color-dark;
+     }
+   }
  }
