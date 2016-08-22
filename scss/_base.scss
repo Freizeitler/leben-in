@@ -23,6 +23,14 @@ h1, h2 {
   font-weight: normal;
 }
 
+h1 {
+  font-size: 1.6em;
+
+  span {
+    font-size: 0.6em;
+  }
+}
+
 label {
 
   &:hover {
@@ -34,8 +42,13 @@ label {
   padding-top: $spacing-hard;
   min-width: 400vw;
   height: 100%;
-  transition: transform 0.3s;
+  transition: transform 0.3s cubic-bezier(0.600, -0.280, 0.735, 0.045);
   display: flex;
+}
+
+.app {
+  height: 100%;
+  width: 100vw;
 }
 
 

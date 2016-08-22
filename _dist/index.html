@@ -1,4 +1,72 @@
-<section class="category-section category-section__01">
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title itemprop="name">A-K Catalog</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style type="text/css">
+    
+		</style>
+  	<link rel="stylesheet" href="./assets/css/app.css">
+	</head>
+	<body>
+
+    <script type="text/javascript">
+      (function() {
+        var httpRequest;
+        //document.getElementById("ajaxButton").onclick = function() { makeRequest('../data/data-offline.json'); };
+
+        function makeRequest(url) {
+          httpRequest = new XMLHttpRequest();
+
+          if (!httpRequest) {
+            alert('JavaScript is disabled...');
+            return false;
+          }
+          httpRequest.onreadystatechange = alertContents;
+          httpRequest.open('GET', url);
+          httpRequest.send();
+        }
+
+        function alertContents() {
+          if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+              var data = JSON.parse(httpRequest.responseText);
+              var recipes = data.rsp.recipes;
+              alert(JSON.stringify(recipes.recipe[2]['@attributes'].name));
+            } else {
+              alert('There was a problem with the request.');
+            }
+          }
+        }
+
+        makeRequest('../data/data-offline.json');
+      })();
+    </script>
+
+
+	
+
+<header class="header" role="banner">
+  <h1><span>Welcome&hellip; It's</span> CocktailTime</h1>
+</header>
+
+
+<div class="app" role="tablist">
+
+  <input type="radio" name="category" id="category01" class="menu-category" checked autofocus role="tab" />
+<label for="category01" class="menu-category">category 01</label>
+<input type="radio" name="category" id="category02" class="menu-category" role="tab" />
+<label for="category02" class="menu-category">category 02</label>
+<input type="radio" name="category" id="category03" class="menu-category" role="tab" />
+<label for="category03" class="menu-category">category 03</label>
+<input type="radio" name="category" id="category04" class="menu-category" role="tab" />
+
+
+  <main class="main" role="main">
+
+    <section class="category-section category-section__01">
   <h2 class="category-section__headline">Category 01</h2>
   <input type="checkbox" name="category01-filter" id="category01-filter01" class="menu-category-filter" data-filter="one" />
   <label for="category01-filter01">filter 01</label>
@@ -92,3 +160,13 @@
     </figure>
   </div>
 </section>
+
+
+  </main>
+</div>
+
+
+	</body>
+</html>
+
+
