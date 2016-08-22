@@ -8,8 +8,41 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="apple-touch-icon" href="[apple-touch-icon.png]">
 		<style type="text/css">
-		
+
 		</style>
   	<link rel="stylesheet" href="{{{css-path}}}app.css">
 	</head>
 	<body>
+
+    <script type="text/javascript">
+      (function() {
+        var httpRequest;
+        //document.getElementById("ajaxButton").onclick = function() { makeRequest('../data/data-offline.json'); };
+
+        function makeRequest(url) {
+          httpRequest = new XMLHttpRequest();
+
+          if (!httpRequest) {
+            alert('JavaScript is disabled...');
+            return false;
+          }
+          httpRequest.onreadystatechange = alertContents;
+          httpRequest.open('GET', url);
+          httpRequest.send();
+        }
+
+        function alertContents() {
+          if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+              var data = JSON.parse(httpRequest.responseText);
+              var recipes = data.rsp.recipes;
+              alert(JSON.stringify(recipes.recipe[2]['@attributes'].name));
+            } else {
+              alert('There was a problem with the request.');
+            }
+          }
+        }
+
+        makeRequest('../data/data-offline.json');
+      })();
+    </script>

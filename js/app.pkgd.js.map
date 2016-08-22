@@ -1,1 +1,1 @@
-{"version":3,"sources":["app.pkgd.js"],"names":["$","document","ready","on"],"mappings":"AAAAA,EAAEC,UAAUC,MAAM,cAIlBF,EAAE,QAAQG,GAAG,QAAS,WACrB,OAAO","file":"app.pkgd.js"}
+{"version":3,"sources":["app.pkgd.js"],"names":["$","on"],"mappings":"AAGAA,EAAE,QAAQC,GAAG,QAAS,WACrB,OAAO","file":"app.pkgd.js"}
