@@ -8,14 +8,14 @@
 
 // Colors (take naming ideas from http://chir.ag/projects/name-that-color/)
 $color-default: rgb(30,30,30);
-$color-dark: rgba(3, 22, 51, 1);
+$color-dark: rgba(49, 4, 54, 1);
 $color-light: rgba(203, 220, 223, 1);
-$color-gray: rgba(168, 167, 167, 1);
+$color-gray: rgba(7, 148, 43, 1);
 $color-gray-light: rgba(225, 225, 225, 1);
 $color-light: rgba(255, 255, 255, 1);
 
 // Fonts
-$font-default: normal 1em/1.4 sans-serif;
+$font-default: normal 1em/1.4 "Trebuchet MS", Helvetica, sans-serif;
 @mixin font-text {
 	font: $font-default;
 	color: $color-default;
