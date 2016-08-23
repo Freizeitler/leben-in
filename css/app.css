@@ -135,21 +135,22 @@ input.menu-category:checked + label, input.menu-category:focus + label {
 /* line 8, ../patterns/organisms/category-section/scss/_category-section.scss */
 .category-section__headline {
   padding: 5px 20px;
-  background: #07942b;
+  background: #61056c;
+  color: white;
 }
 
-/* line 14, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 15, ../patterns/organisms/category-section/scss/_category-section.scss */
 .menu-category-filter {
   margin: 20px 0 0 20px;
 }
-/* line 17, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 18, ../patterns/organisms/category-section/scss/_category-section.scss */
 .menu-category-filter:checked ~ .teaser-section .teaser-section__teaser {
   opacity: 0;
   margin: 0;
   padding: 0;
   max-height: 0;
 }
-/* line 24, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 25, ../patterns/organisms/category-section/scss/_category-section.scss */
 .menu-category-filter[data-filter=one]:checked ~ .teaser-section .teaser-section__teaser[data-tag=one], .menu-category-filter[data-filter=two]:checked ~ .teaser-section .teaser-section__teaser[data-tag=two], .menu-category-filter[data-filter=three]:checked ~ .teaser-section .teaser-section__teaser[data-tag=three] {
   max-height: 150px;
   opacity: 1;
@@ -157,7 +158,7 @@ input.menu-category:checked + label, input.menu-category:focus + label {
   padding: 20px;
 }
 
-/* line 32, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 33, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -168,7 +169,7 @@ input.menu-category:checked + label, input.menu-category:focus + label {
   margin: 20px;
   overflow: hidden;
 }
-/* line 38, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 39, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__teaser {
   margin: 10px 0;
   padding: 20px;
@@ -181,11 +182,11 @@ input.menu-category:checked + label, input.menu-category:focus + label {
   overflow: hidden;
   border-radius: 96px 0 0 96px;
 }
-/* line 49, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 50, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__text {
   padding-left: 20px;
 }
-/* line 53, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 54, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__image {
   border-radius: 50%;
 }
