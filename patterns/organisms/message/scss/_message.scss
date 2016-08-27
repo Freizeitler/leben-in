@@ -1,0 +1,30 @@
+@mixin message() {
+  display: flex;
+  align-items: center;
+  margin: $spacing-hard/4 $spacing-hard;
+  max-height: 60px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.175,  0.885, 0.320, 1.275);
+
+  &__icon {
+    fill: $color-dark;
+    width: 40px;
+    height: 40px;
+    animation: spin 1.4s infinite linear;
+    transform-origin: 16px 16px;
+  }
+
+  &__status {
+    color: $color-error;
+  }
+}
+
+@-webkit-keyframes spin {
+  0%  {-webkit-transform: rotate(0deg);}
+  100% {-webkit-transform: rotate(360deg);}
+}
+
+.message {
+  @include message();
+}

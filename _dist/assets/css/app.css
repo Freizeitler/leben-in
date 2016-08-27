@@ -55,7 +55,6 @@ label:hover {
 
 /* line 41, ../scss/_base.scss */
 .main {
-  padding-top: 20px;
   min-width: 400vw;
   height: 100%;
   transition: -webkit-transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
@@ -65,7 +64,7 @@ label:hover {
   display: flex;
 }
 
-/* line 49, ../scss/_base.scss */
+/* line 48, ../scss/_base.scss */
 .app {
   height: 100%;
   width: 100vw;
@@ -73,19 +72,23 @@ label:hover {
 
 /* line 1, ../patterns/organisms/header/scss/_header.scss */
 .header {
-  background-color: #310436;
-  height: 80px;
+  background: linear-gradient(to bottom, #310436 60%, #61056c 100%);
+  height: 100px;
   width: 400vw;
   color: white;
-  padding: 0 20px;
+  padding: 0 30px;
   position: absolute;
   box-sizing: border-box;
+}
+/* line 10, ../patterns/organisms/header/scss/_header.scss */
+.header__headline {
+  margin-top: 5px;
 }
 
 /* line 1, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category {
   color: white;
-  margin-top: 40px;
+  margin-top: 60px;
   margin-left: 20px;
   position: relative;
   z-index: 2;
@@ -172,23 +175,78 @@ input.menu-category:checked + label, input.menu-category:focus + label {
 /* line 39, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__teaser {
   margin: 10px 0;
-  padding: 20px;
-  border: 1px solid #e1e1e1;
+  padding: 20px 0;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  max-height: 150px;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  overflow: hidden;
-  border-radius: 96px 0 0 96px;
 }
-/* line 50, ../patterns/organisms/category-section/scss/_category-section.scss */
+@media (min-width: 45.25em) {
+  /* line 39, ../patterns/organisms/category-section/scss/_category-section.scss */
+  .teaser-section__teaser {
+    border: 1px solid #e1e1e1;
+    padding: 20px;
+    max-height: 150px;
+    overflow: hidden;
+    border-radius: 96px 0 0 96px;
+  }
+}
+/* line 56, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__text {
   padding-left: 20px;
 }
-/* line 54, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 60, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__image {
   border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+@media (min-width: 45.25em) {
+  /* line 60, ../patterns/organisms/category-section/scss/_category-section.scss */
+  .teaser-section__image {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+/* line 28, ../patterns/organisms/message/scss/_message.scss */
+.message {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5px 20px;
+  max-height: 60px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+/* line 10, ../patterns/organisms/message/scss/_message.scss */
+.message__icon {
+  fill: #310436;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 1.4s infinite linear;
+          animation: spin 1.4s infinite linear;
+  -webkit-transform-origin: 16px 16px;
+      -ms-transform-origin: 16px 16px;
+          transform-origin: 16px 16px;
+}
+/* line 18, ../patterns/organisms/message/scss/_message.scss */
+.message__status {
+  color: #6c0505;
 }
 
 /*# sourceMappingURL=app.css.map */

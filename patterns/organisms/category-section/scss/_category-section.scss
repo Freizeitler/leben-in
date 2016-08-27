@@ -38,13 +38,19 @@
 
   &__teaser {
     margin: $spacing-hard/2 0;
-    padding: $spacing-hard;
-    border: 1px solid $color-gray-light;
+    padding: $spacing-hard 0;
+    border-top: 1px solid $color-gray-light;
+    border-bottom: 1px solid $color-gray-light;
     display: flex;
-    max-height: 150px;
     transition: all 0.3s cubic-bezier(0.175,  0.885, 0.320, 1.275);
-    overflow: hidden;
-    border-radius: 96px 0 0 96px;
+
+    @media (min-width: $breakpoint-medium) {
+      border: 1px solid $color-gray-light;
+      padding: $spacing-hard;
+      max-height: 150px;
+      overflow: hidden;
+      border-radius: 96px 0 0 96px;
+    }
   }
 
   &__text {
@@ -53,6 +59,13 @@
 
   &__image {
     border-radius: 50%;
+    width: 100px;
+    height: 100px;
+
+    @media (min-width: $breakpoint-medium) {
+      width: 150px;
+      height: 150px;
+    }
   }
 
 }
