@@ -42,13 +42,13 @@
     border-top: 1px solid $color-gray-light;
     border-bottom: 1px solid $color-gray-light;
     display: flex;
+    max-height: 110px;
+    overflow: hidden;
     transition: all 0.3s cubic-bezier(0.175,  0.885, 0.320, 1.275);
 
     @media (min-width: $breakpoint-medium) {
       border: 1px solid $color-gray-light;
       padding: $spacing-hard;
-      max-height: 150px;
-      overflow: hidden;
       border-radius: 96px 0 0 96px;
     }
   }
@@ -61,6 +61,7 @@
     border-radius: 50%;
     width: 100px;
     height: 100px;
+    max-width: 100%;
 
     @media (min-width: $breakpoint-medium) {
       width: 150px;

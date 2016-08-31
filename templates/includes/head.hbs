@@ -6,7 +6,7 @@
 		<title itemprop="name">A-K Catalog</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style type="text/css">
-    
+
 		</style>
   	<link rel="stylesheet" href="{{{css-path}}}app.css">
 	</head>
@@ -14,6 +14,7 @@
 
     <script type="text/javascript">
       (function() {
+        'use strict';
         var httpRequest;
         //document.getElementById("ajaxButton").onclick = function() { makeRequest('../data/data-offline.json'); };
 
@@ -21,20 +22,21 @@
           httpRequest = new XMLHttpRequest();
 
           if (!httpRequest) {
-            alert('JavaScript is disabled...');
+            document.getElementById("jsStatus").textContent = '¯\_(ツ)_/¯ No Connection!';
             return false;
           }
-          httpRequest.onreadystatechange = alertContents;
+          httpRequest.onreadystatechange = generateContents;
           httpRequest.open('GET', url);
           httpRequest.send();
         }
 
-        function alertContents() {
+        function generateContents() {
           if (httpRequest.readyState === XMLHttpRequest.DONE) {
             if (httpRequest.status === 200) {
               var data = JSON.parse(httpRequest.responseText);
               var recipes = data.rsp.recipes;
-              alert(JSON.stringify(recipes.recipe[2]['@attributes'].name));
+              //alert(JSON.stringify(recipes.recipe[2]['@attributes'].name));
+
             } else {
               alert('There was a problem with the request.');
             }

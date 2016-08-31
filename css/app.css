@@ -48,12 +48,23 @@ h1 span {
   font-size: 0.6em;
 }
 
-/* line 36, ../scss/_base.scss */
+/* line 34, ../scss/_base.scss */
+h3 {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+/* line 39, ../scss/_base.scss */
+p {
+  margin-top: 0;
+}
+
+/* line 45, ../scss/_base.scss */
 label:hover {
   cursor: pointer;
 }
 
-/* line 41, ../scss/_base.scss */
+/* line 50, ../scss/_base.scss */
 .main {
   min-width: 400vw;
   height: 100%;
@@ -64,7 +75,7 @@ label:hover {
   display: flex;
 }
 
-/* line 48, ../scss/_base.scss */
+/* line 57, ../scss/_base.scss */
 .app {
   height: 100%;
   width: 100vw;
@@ -94,34 +105,35 @@ label:hover {
   z-index: 2;
   padding: 10px;
   display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
-/* line 12, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 13, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category:nth-of-type(1):checked ~ .main {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
-/* line 19, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 20, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category:nth-of-type(2):checked ~ .main {
   -webkit-transform: translate3d(-100vw, 0, 0);
           transform: translate3d(-100vw, 0, 0);
 }
-/* line 26, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 27, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category:nth-of-type(3):checked ~ .main {
   -webkit-transform: translate3d(-200vw, 0, 0);
           transform: translate3d(-200vw, 0, 0);
 }
-/* line 33, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 34, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category:nth-of-type(4):checked ~ .main {
   -webkit-transform: translate3d(-300vw, 0, 0);
           transform: translate3d(-300vw, 0, 0);
 }
 
-/* line 39, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 40, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 input.menu-category {
   position: absolute;
   z-index: -1;
 }
-/* line 45, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 46, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 input.menu-category:checked + label, input.menu-category:focus + label {
   background: white;
   color: #310436;
@@ -181,6 +193,8 @@ input.menu-category:checked + label, input.menu-category:focus + label {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  max-height: 110px;
+  overflow: hidden;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 @media (min-width: 45.25em) {
@@ -188,8 +202,6 @@ input.menu-category:checked + label, input.menu-category:focus + label {
   .teaser-section__teaser {
     border: 1px solid #e1e1e1;
     padding: 20px;
-    max-height: 150px;
-    overflow: hidden;
     border-radius: 96px 0 0 96px;
   }
 }
@@ -202,6 +214,7 @@ input.menu-category:checked + label, input.menu-category:focus + label {
   border-radius: 50%;
   width: 100px;
   height: 100px;
+  max-width: 100%;
 }
 @media (min-width: 45.25em) {
   /* line 60, ../patterns/organisms/category-section/scss/_category-section.scss */
