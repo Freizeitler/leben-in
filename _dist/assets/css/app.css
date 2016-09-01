@@ -190,11 +190,6 @@ input.menu-category:checked + label, input.menu-category:focus + label {
   padding: 20px 0;
   border-top: 1px solid #e1e1e1;
   border-bottom: 1px solid #e1e1e1;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  max-height: 110px;
-  overflow: hidden;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 @media (min-width: 45.25em) {
@@ -205,23 +200,50 @@ input.menu-category:checked + label, input.menu-category:focus + label {
     border-radius: 96px 0 0 96px;
   }
 }
-/* line 56, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 53, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__text {
   padding-left: 20px;
 }
-/* line 60, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 57, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__image {
   border-radius: 50%;
   width: 100px;
   height: 100px;
   max-width: 100%;
+  float: left;
+  margin-right: 20px;
 }
 @media (min-width: 45.25em) {
-  /* line 60, ../patterns/organisms/category-section/scss/_category-section.scss */
+  /* line 57, ../patterns/organisms/category-section/scss/_category-section.scss */
   .teaser-section__image {
     width: 150px;
     height: 150px;
   }
+}
+/* line 71, ../patterns/organisms/category-section/scss/_category-section.scss */
+.teaser-section__more-button {
+  clear: left;
+}
+/* line 74, ../patterns/organisms/category-section/scss/_category-section.scss */
+.teaser-section__more-button:checked ~ .teaser-section__more {
+  max-height: 260px;
+  margin-top: 1em;
+}
+/* line 80, ../patterns/organisms/category-section/scss/_category-section.scss */
+.teaser-section__more {
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+/* line 87, ../patterns/organisms/category-section/scss/_category-section.scss */
+.teaser-section dt {
+  font-weight: bold;
+}
+/* line 91, ../patterns/organisms/category-section/scss/_category-section.scss */
+.teaser-section dd {
+  margin-left: 0;
+  margin-bottom: 1em;
 }
 
 @-webkit-keyframes spin {
