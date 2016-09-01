@@ -167,7 +167,7 @@ input.menu-category:checked + label, input.menu-category:focus + label {
 }
 /* line 25, ../patterns/organisms/category-section/scss/_category-section.scss */
 .menu-category-filter[data-filter=one]:checked ~ .teaser-section .teaser-section__teaser[data-tag=one], .menu-category-filter[data-filter=two]:checked ~ .teaser-section .teaser-section__teaser[data-tag=two], .menu-category-filter[data-filter=three]:checked ~ .teaser-section .teaser-section__teaser[data-tag=three] {
-  max-height: 150px;
+  max-height: 400px;
   opacity: 1;
   margin: 10px 0;
   padding: 20px;
@@ -226,7 +226,7 @@ input.menu-category:checked + label, input.menu-category:focus + label {
 }
 /* line 74, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__more-button:checked ~ .teaser-section__more {
-  max-height: 260px;
+  max-height: 400px;
   margin-top: 1em;
 }
 /* line 80, ../patterns/organisms/category-section/scss/_category-section.scss */
@@ -246,40 +246,51 @@ input.menu-category:checked + label, input.menu-category:focus + label {
   margin-bottom: 1em;
 }
 
-@-webkit-keyframes spin {
+@-webkit-keyframes wait {
   0% {
-    -webkit-transform: rotate(0deg);
+    max-width: 0;
+  }
+  10% {
+    max-width: 0;
+  }
+  80% {
+    max-width: 3em;
   }
   100% {
-    -webkit-transform: rotate(360deg);
+    max-width: 3em;
   }
 }
-/* line 28, ../patterns/organisms/message/scss/_message.scss */
+
+@keyframes wait {
+  0% {
+    max-width: 0;
+  }
+  10% {
+    max-width: 0;
+  }
+  80% {
+    max-width: 3em;
+  }
+  100% {
+    max-width: 3em;
+  }
+}
+/* line 34, ../patterns/organisms/message/scss/_message.scss */
 .message {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
   margin: 5px 20px;
   max-height: 60px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-/* line 10, ../patterns/organisms/message/scss/_message.scss */
-.message__icon {
-  fill: #310436;
-  width: 40px;
-  height: 40px;
-  -webkit-animation: spin 1.4s infinite linear;
-          animation: spin 1.4s infinite linear;
-  -webkit-transform-origin: 16px 16px;
-      -ms-transform-origin: 16px 16px;
-          transform-origin: 16px 16px;
+/* line 8, ../patterns/organisms/message/scss/_message.scss */
+.message__waiting {
+  max-width: 0;
+  overflow: hidden;
+  -webkit-animation: wait 1.5s linear infinite;
+          animation: wait 1.5s linear infinite;
 }
-/* line 18, ../patterns/organisms/message/scss/_message.scss */
+/* line 14, ../patterns/organisms/message/scss/_message.scss */
 .message__status {
   color: #6c0505;
 }

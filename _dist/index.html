@@ -64,18 +64,7 @@
 
 
   <section class="message">
-  <svg width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none;">
-    <defs>
-      <symbol id="icon-spinner9" viewBox="0 0 40 40">
-        <title>Loading spinner</title>
-        <path class="path1" d="M16 0c-8.711 0-15.796 6.961-15.995 15.624 0.185-7.558 5.932-13.624 12.995-13.624 7.18 0 13 6.268 13 14 0 1.657 1.343 3 3 3s3-1.343 3-3c0-8.837-7.163-16-16-16zM16 32c8.711 0 15.796-6.961 15.995-15.624-0.185 7.558-5.932 13.624-12.995 13.624-7.18 0-13-6.268-13-14 0-1.657-1.343-3-3-3s-3 1.343-3 3c0 8.837 7.163 16 16 16z"></path>
-      </symbol>
-    </defs>
-  </svg>
-  <svg class="message__icon">
-      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-spinner9"></use>
-  </svg>
-  <p class="message__text">Actualising&hellip; <span id="jsStatus" class="message__status">¯\_(ツ)_/¯ No JavaScript!</span></p>
+  <p class="message__text">Actualising<span class="message__waiting">...</span> <span id="jsStatus" class="message__status">¯Sorry, I need JavaScript!</span></p>
 </section>
 
 
@@ -106,18 +95,40 @@
         </dl>
       </div>
     </article>
-    <figure class="teaser-section__teaser" data-tag="three">
+
+    <article class="teaser-section__teaser" data-tag="one" data-id="1">
       <img class="teaser-section__image" width="150" height="150" src="http://placehold.it/150x150" alt="" />
-      <figcaption  class="teaser-section__text">
-        Teaser 02
-      </figcaption>
-    </figure>
-    <figure class="teaser-section__teaser"data-tag="two">
+      <div  class="teaser-section__text">
+        <h3>Name</h3>
+        <p>Dies ist das Originalrezept des Pi\u00f1a Colada.</p>
+        <p><strong>Rating;</strong> 3.5</p>
+        <input type="checkbox" class="teaser-section__more-button" name="learn-more1" id="learn-more1" />
+        <label for="learn-more1">Learn more</label>
+        <dl class="teaser-section__more">
+          <dt>Instruction:</dt>
+          <dd>Alle Zutaten mit gesto\u00dfenem Eis in einen Blender geben und anschlie\u00dfend in einem gro\u00dfen Tumbler servieren.</dd>
+          <dt>ingredients:</dt>
+          <dd>Rum (wei\u00df), Ananassaft, Cream of Coconut, Chrushed Ice</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="teaser-section__teaser" data-tag="one" data-id="1">
       <img class="teaser-section__image" width="150" height="150" src="http://placehold.it/150x150" alt="" />
-      <figcaption  class="teaser-section__text">
-        Teaser 03
-      </figcaption>
-    </figure>
+      <div  class="teaser-section__text">
+        <h3>Name</h3>
+        <p>Dies ist das Originalrezept des Pi\u00f1a Colada.</p>
+        <p><strong>Rating;</strong> 3.5</p>
+        <input type="checkbox" class="teaser-section__more-button" name="learn-more1" id="learn-more1" />
+        <label for="learn-more1">Learn more</label>
+        <dl class="teaser-section__more">
+          <dt>Instruction:</dt>
+          <dd>Alle Zutaten mit gesto\u00dfenem Eis in einen Blender geben und anschlie\u00dfend in einem gro\u00dfen Tumbler servieren.</dd>
+          <dt>ingredients:</dt>
+          <dd>Rum (wei\u00df), Ananassaft, Cream of Coconut, Chrushed Ice</dd>
+        </dl>
+      </div>
+    </article>
 
   </div>
 </section>
@@ -132,24 +143,22 @@
 
   <div class="teaser-section" id="jsTeaserNonAlc">
 
-    <figure class="teaser-section__teaser" data-tag="one">
+    <article class="teaser-section__teaser" data-tag="one" data-id="1">
       <img class="teaser-section__image" width="150" height="150" src="http://placehold.it/150x150" alt="" />
-      <figcaption  class="teaser-section__text">
-        Teaser 01
-      </figcaption>
-    </figure>
-    <figure class="teaser-section__teaser" data-tag="three">
-      <img class="teaser-section__image" width="150" height="150" src="http://placehold.it/150x150" alt="" />
-      <figcaption  class="teaser-section__text">
-        Teaser 02
-      </figcaption>
-    </figure>
-    <figure class="teaser-section__teaser"data-tag="two">
-      <img class="teaser-section__image" width="150" height="150" src="http://placehold.it/150x150" alt="" />
-      <figcaption  class="teaser-section__text">
-        Teaser 03
-      </figcaption>
-    </figure>
+      <div  class="teaser-section__text">
+        <h3>Name</h3>
+        <p>Dies ist das Originalrezept des Pi\u00f1a Colada.</p>
+        <p><strong>Rating;</strong> 3.5</p>
+        <input type="checkbox" class="teaser-section__more-button" name="learn-more1" id="learn-more1" />
+        <label for="learn-more1">Learn more</label>
+        <dl class="teaser-section__more">
+          <dt>Instruction:</dt>
+          <dd>Alle Zutaten mit gesto\u00dfenem Eis in einen Blender geben und anschlie\u00dfend in einem gro\u00dfen Tumbler servieren.</dd>
+          <dt>ingredients:</dt>
+          <dd>Rum (wei\u00df), Ananassaft, Cream of Coconut, Chrushed Ice</dd>
+        </dl>
+      </div>
+    </article>
 
   </div>
 </section>

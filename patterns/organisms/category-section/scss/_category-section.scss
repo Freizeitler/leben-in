@@ -23,7 +23,7 @@
   }
 
   &[data-filter=one]:checked ~ .teaser-section .teaser-section__teaser[data-tag=one], &[data-filter=two]:checked ~ .teaser-section .teaser-section__teaser[data-tag=two], &[data-filter=three]:checked ~ .teaser-section .teaser-section__teaser[data-tag=three] {
-    max-height: 150px;
+    max-height: 400px;
     opacity: 1;
     margin: $spacing-hard/2 0;
     padding: $spacing-hard;
@@ -72,7 +72,7 @@
     clear: left;
 
     &:checked ~ .teaser-section__more {
-      max-height: 260px;
+      max-height: 400px;
       margin-top: 1em;
     }
   }
