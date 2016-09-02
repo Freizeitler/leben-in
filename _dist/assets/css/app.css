@@ -166,7 +166,7 @@ input.menu-category:checked + label, input.menu-category:focus + label {
   max-height: 0;
 }
 /* line 25, ../patterns/organisms/category-section/scss/_category-section.scss */
-.menu-category-filter[data-filter=one]:checked ~ .teaser-section .teaser-section__teaser[data-tag=one], .menu-category-filter[data-filter=two]:checked ~ .teaser-section .teaser-section__teaser[data-tag=two], .menu-category-filter[data-filter=three]:checked ~ .teaser-section .teaser-section__teaser[data-tag=three] {
+.menu-category-filter[data-filter=one]:checked ~ .teaser-section .teaser-section__teaser[data-tag=beginner], .menu-category-filter[data-filter=two]:checked ~ .teaser-section .teaser-section__teaser[data-tag=advanced], .menu-category-filter[data-filter=three]:checked ~ .teaser-section .teaser-section__teaser[data-tag=three] {
   max-height: 400px;
   opacity: 1;
   margin: 10px 0;
@@ -275,24 +275,20 @@ input.menu-category:checked + label, input.menu-category:focus + label {
     max-width: 3em;
   }
 }
-/* line 34, ../patterns/organisms/message/scss/_message.scss */
+/* line 31, ../patterns/organisms/message/scss/_message.scss */
 .message {
   margin: 5px 20px;
   max-height: 60px;
-  max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-/* line 8, ../patterns/organisms/message/scss/_message.scss */
-.message__waiting {
-  max-width: 0;
-  overflow: hidden;
-  -webkit-animation: wait 1.5s linear infinite;
-          animation: wait 1.5s linear infinite;
-}
-/* line 14, ../patterns/organisms/message/scss/_message.scss */
+/* line 7, ../patterns/organisms/message/scss/_message.scss */
 .message__status {
   color: #6c0505;
+}
+/* line 11, ../patterns/organisms/message/scss/_message.scss */
+.message.hide {
+  max-height: 0;
 }
 
 /*# sourceMappingURL=app.css.map */

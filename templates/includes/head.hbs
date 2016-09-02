@@ -11,38 +11,3 @@
   	<link rel="stylesheet" href="{{{css-path}}}app.css">
 	</head>
 	<body>
-
-    <script type="text/javascript">
-      (function() {
-        'use strict';
-        var httpRequest;
-        //document.getElementById("ajaxButton").onclick = function() { makeRequest('../data/data-offline.json'); };
-
-        function makeRequest(url) {
-          httpRequest = new XMLHttpRequest();
-
-          if (!httpRequest) {
-            document.getElementById("jsStatus").textContent = '¯\_(ツ)_/¯ No Connection!';
-            return false;
-          }
-          httpRequest.onreadystatechange = generateContents;
-          httpRequest.open('GET', url);
-          httpRequest.send();
-        }
-
-        function generateContents() {
-          if (httpRequest.readyState === XMLHttpRequest.DONE) {
-            if (httpRequest.status === 200) {
-              var data = JSON.parse(httpRequest.responseText);
-              var recipes = data.rsp.recipes;
-              //alert(JSON.stringify(recipes.recipe[2]['@attributes'].name));
-
-            } else {
-              alert('There was a problem with the request.');
-            }
-          }
-        }
-
-        makeRequest('../data/data-offline.json');
-      })();
-    </script>

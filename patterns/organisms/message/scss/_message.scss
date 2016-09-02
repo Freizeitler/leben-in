@@ -1,18 +1,15 @@
 @mixin message() {
   margin: $spacing-hard/4 $spacing-hard;
   max-height: 60px;
-  max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s cubic-bezier(0.175,  0.885, 0.320, 1.275);
 
-  &__waiting {
-    max-width: 0;
-    overflow: hidden;
-    animation: wait 1.5s linear infinite;
-  }
-
   &__status {
     color: $color-error;
+  }
+
+  &.hide {
+    max-height: 0;
   }
 }
 

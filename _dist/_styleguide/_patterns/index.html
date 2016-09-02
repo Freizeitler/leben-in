@@ -66,8 +66,8 @@
 <label for="category02" class="menu-category">Non-alcoholic</label>
 
 
-  <section class="message">
-  <p class="message__text">Actualising<span class="message__waiting">...</span> <span id="jsStatus" class="message__status">¯Sorry, I need JavaScript!</span></p>
+  <section class="message" id="jsMessage">
+  <p class="message__text">Actualising<span class="message__waiting">...</span> <span id="jsStatus" class="message__status">Sorry, I need JavaScript!</span></p>
 </section>
 
 
@@ -139,9 +139,9 @@
 
 <section class="category-section category-section__02">
   <h2 class="category-section__headline">Soft drinks</h2>
-  <input type="checkbox" name="category01-filter" id="category01-filter01" class="menu-category-filter" />
+  <input type="checkbox" name="category01-filter" id="category01-filter01" class="menu-category-filter" data-filter="one" />
   <label for="category01-filter01">Beginner</label>
-  <input type="checkbox" name="category01-filter"id="category01-filter02"  class="menu-category-filter" />
+  <input type="checkbox" name="category01-filter"id="category01-filter02"  class="menu-category-filter" data-filter="two" />
   <label for="category01-filter02">Advanced</label>
 
   <div class="teaser-section" id="jsTeaserNonAlc">
@@ -169,6 +169,76 @@
 
   </main>
 </div>
+<script type="text/javascript">
+  (function() {
+    'use strict';
+    var httpRequest;
+    var targetMessage = document.getElementById('jsMessage');
+    //document.getElementById("ajaxButton").onclick = function() { makeRequest('../data/data-offline.json'); };
+
+    targetMessage.classList.add('hide');
+    function makeRequest(url) {
+      httpRequest = new XMLHttpRequest();
+
+      if (!httpRequest) {
+        targetMessage.classList.remove('hide');
+        document.getElementById('jsStatus').textContent = 'Sorry, I need a connection!';
+        return false;
+      }
+      httpRequest.onreadystatechange = generateContents;
+      httpRequest.open('GET', url);
+      httpRequest.send();
+    }
+
+    function generateContents() {
+      if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+          var data = JSON.parse(httpRequest.responseText);
+          var recipes = data.rsp.recipes.recipe;
+
+          for (var i = 0; i < recipes.length; i++) {
+            var obj = recipes[i];
+            console.log(obj['@attributes'].name);
+            var articleTarget;
+
+            if (obj['@attributes'].isAlcoholic === 1) {
+              articleTarget = document.getElementById('jsTeaserSpirituous');
+            } else {
+              articleTarget = document.getElementById('jsTeaserNonAlc');
+            }
+            articleTarget.insertAdjacentHTML('beforeend',
+              '<article class="teaser-section__teaser" data-tag="' + obj['@attributes'].difficulty + '" data-id="' + i + '">' +
+              '<img class="teaser-section__image" width="150" height="150" src="'+ obj.photos.photo['@attributes'].url  + '" alt="" />' +
+              '<div  class="teaser-section__text">' +
+              '<h3>' + obj['@attributes'].name + '</h3>' +
+              '<p>' + obj['@attributes'].description + '</p>' +
+              '<p><strong>Rating;</strong> ' + obj['@attributes'].rating + '</p>' +
+              '<input type="checkbox" class="teaser-section__more-button" name="learn-more' + i + '" id="learn-more' +i + '" />' +
+              '<label for="learn-more'+ i + '">Learn more</label>' +
+              '<dl class="teaser-section__more">' +
+              '<dt>Instruction:</dt>' +
+              '<dd>' + obj['@attributes'].instruction + '</dd>' +
+              '<dt>ingredients:</dt>' +
+              '<dd>' + obj['@attributes'].ingedients + '</dd>' +
+              '</dl>' +
+              '</div>' +
+              '</article>'
+            );
+              //console.log(item.name + ' ' + item.id);
+          }
+
+          targetMessage.classList.add('hide');
+          //alert(JSON.stringify(recipes.recipe[2]['@attributes'].name));
+
+        } else {
+          alert('There was a problem with the request.');
+        }
+      }
+    }
+
+    makeRequest('../data/data-offline.json');
+  })();
+</script>
 
 
 	 </div>
