@@ -45,30 +45,41 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
           var data = JSON.parse(httpRequest.responseText);
           var recipes = data.rsp.recipes.recipe;
 
+          document.getElementById('jsTeaserSpirituous').innerHTML = '';
+          document.getElementById('jsTeaserNonAlc').innerHTML = '';
+
           for (var i = 0; i < recipes.length; i++) {
             var obj = recipes[i];
-            console.log(obj['@attributes'].name);
+            //console.log(obj['@attributes'].name);
             var articleTarget;
+            var difficulty = obj['@attributes'].difficulty || 'no data';
+            var picture = obj.photos.photo['@attributes'].url || 'images/placeholder.svg';
+            var name = obj['@attributes'].name || 'no data';
+            var description = obj['@attributes'].description || 'no data';
+            var rating = obj['@attributes'].rating || 'no data';
+            var instructions = obj['@attributes'].instruction || 'no data';
+            var ingredients = obj['@attributes'].ingedients || 'no data';
 
-            if (obj['@attributes'].isAlcoholic === 1) {
+            if (obj['@attributes'].isAlcoholic === '1') {
               articleTarget = document.getElementById('jsTeaserSpirituous');
             } else {
               articleTarget = document.getElementById('jsTeaserNonAlc');
             }
+
             articleTarget.insertAdjacentHTML('beforeend',
-              '<article class="teaser-section__teaser" data-tag="' + obj['@attributes'].difficulty + '" data-id="' + i + '">' +
-              '<img class="teaser-section__image" width="150" height="150" src="'+ obj.photos.photo['@attributes'].url  + '" alt="" />' +
+              '<article class="teaser-section__teaser" data-tag="' + difficulty + '" data-id="' + i + '">' +
+              '<img class="teaser-section__image" width="150" height="150" src="' + picture + '" alt="" />' +
               '<div  class="teaser-section__text">' +
-              '<h3>' + obj['@attributes'].name + '</h3>' +
-              '<p>' + obj['@attributes'].description + '</p>' +
-              '<p><strong>Rating;</strong> ' + obj['@attributes'].rating + '</p>' +
+              '<h3>' + name + '</h3>' +
+              '<p>' + description + '</p>' +
+              '<p><strong>Rating;</strong> ' + rating + '</p>' +
               '<input type="checkbox" class="teaser-section__more-button" name="learn-more' + i + '" id="learn-more' +i + '" />' +
               '<label for="learn-more'+ i + '">Learn more</label>' +
               '<dl class="teaser-section__more">' +
               '<dt>Instruction:</dt>' +
-              '<dd>' + obj['@attributes'].instruction + '</dd>' +
+              '<dd>' + instructions + '</dd>' +
               '<dt>ingredients:</dt>' +
-              '<dd>' + obj['@attributes'].ingedients + '</dd>' +
+              '<dd>' + ingredients + '</dd>' +
               '</dl>' +
               '</div>' +
               '</article>'

@@ -42,6 +42,7 @@
     border-top: 1px solid $color-gray-light;
     border-bottom: 1px solid $color-gray-light;
     transition: all 0.3s cubic-bezier(0.175,  0.885, 0.320, 1.275);
+    max-width: 1200px;
 
     @media (min-width: $breakpoint-medium) {
       border: 1px solid $color-gray-light;
