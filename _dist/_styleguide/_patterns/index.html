@@ -201,7 +201,7 @@
 
           for (var i = 0; i < recipes.length; i++) {
             var obj = recipes[i];
-            //console.log(obj['@attributes'].name);
+            //console.log(obj.photos.photo['@attributes'].url);
             var articleTarget;
             var difficulty = obj['@attributes'].difficulty || 'no data';
             var picture = obj.photos.photo['@attributes'].url || 'images/placeholder.svg';

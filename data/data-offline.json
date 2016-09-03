@@ -3221,17 +3221,7 @@
                   ]
                },
                "photos":{
-                  "photo":[
-                     {
-                        "@attributes":{
-                           "id":"57",
-                           "name":"Gin (and) Tonic",
-                           "description":"",
-                           "url":"http:\/\/www.cocktailberater.de\/img\/recipes\/Gin-tonic_klein.jpg",
-                           "originalFileName":"Gin-tonic.jpg",
-                           "photoCategory":"1"
-                        }
-                     },
+                  "photo":
                      {
                         "@attributes":{
                            "id":"62",
@@ -3242,7 +3232,6 @@
                            "photoCategory":"1"
                         }
                      }
-                  ]
                },
                "videos":{
                   "video":{
@@ -4888,17 +4877,7 @@
                   ]
                },
                "photos":{
-                  "photo":[
-                     {
-                        "@attributes":{
-                           "id":"42",
-                           "name":"Margarita",
-                           "description":"none",
-                           "url":"http:\/\/www.cocktailberater.de\/img\/recipes\/35.jpg",
-                           "originalFileName":"35.jpg",
-                           "photoCategory":"1"
-                        }
-                     },
+                  "photo":
                      {
                         "@attributes":{
                            "id":"65",
@@ -4908,18 +4887,7 @@
                            "originalFileName":"re_cock_margarita.jpg",
                            "photoCategory":"1"
                         }
-                     },
-                     {
-                        "@attributes":{
-                           "id":"67",
-                           "name":"Margarita",
-                           "description":"Bild von Beam Global Deutschland GmbH",
-                           "url":"http:\/\/www.cocktailberater.de\/img\/recipes\/sauza_cockt_01_klein.jpg",
-                           "originalFileName":"sauza_cockt_01.jpg",
-                           "photoCategory":"1"
-                        }
                      }
-                  ]
                },
                "videos":{
                   "video":{
@@ -5056,27 +5024,7 @@
                   ]
                },
                "photos":{
-                  "photo":[
-                     {
-                        "@attributes":{
-                           "id":"1",
-                           "name":"Mojito - Original",
-                           "description":"none",
-                           "url":"http:\/\/www.cocktailberater.de\/img\/recipes\/1.jpg",
-                           "originalFileName":"1_original.jpg",
-                           "photoCategory":"1"
-                        }
-                     },
-                     {
-                        "@attributes":{
-                           "id":"41",
-                           "name":"photocase597323977152.jpg",
-                           "description":"",
-                           "url":"http:\/\/www.cocktailberater.de\/img\/recipes\/60fb1ea07876f57ff94c643ef38c3251.jpg",
-                           "originalFileName":"60fb1ea07876f57ff94c643ef38c3251_original.jpg",
-                           "photoCategory":"1"
-                        }
-                     },
+                  "photo":
                      {
                         "@attributes":{
                            "id":"64",
@@ -5087,7 +5035,6 @@
                            "photoCategory":"1"
                         }
                      }
-                  ]
                },
                "videos":{
                   "video":[
@@ -5254,27 +5201,7 @@
                   ]
                },
                "photos":{
-                  "photo":[
-                     {
-                        "@attributes":{
-                           "id":"1",
-                           "name":"Mojito - Original",
-                           "description":"none",
-                           "url":"http:\/\/www.cocktailberater.de\/img\/recipes\/1.jpg",
-                           "originalFileName":"1_original.jpg",
-                           "photoCategory":"1"
-                        }
-                     },
-                     {
-                        "@attributes":{
-                           "id":"41",
-                           "name":"photocase597323977152.jpg",
-                           "description":"",
-                           "url":"http:\/\/www.cocktailberater.de\/img\/recipes\/60fb1ea07876f57ff94c643ef38c3251.jpg",
-                           "originalFileName":"60fb1ea07876f57ff94c643ef38c3251_original.jpg",
-                           "photoCategory":"1"
-                        }
-                     },
+                  "photo":
                      {
                         "@attributes":{
                            "id":"64",
@@ -5285,7 +5212,6 @@
                            "photoCategory":"1"
                         }
                      }
-                  ]
                },
                "videos":{
                   "video":{
@@ -5962,17 +5888,7 @@
                   }
                },
                "photos":{
-                  "photo":[
-                     {
-                        "@attributes":{
-                           "id":"23",
-                           "name":"Planter\\'s Punch",
-                           "description":"none",
-                           "url":"http:\/\/www.cocktailberater.de\/img\/recipes\/23.jpg",
-                           "originalFileName":"23_original.jpg",
-                           "photoCategory":"1"
-                        }
-                     },
+                  "photo":
                      {
                         "@attributes":{
                            "id":"63",
@@ -5983,7 +5899,6 @@
                            "photoCategory":"1"
                         }
                      }
-                  ]
                },
                "videos":"",
                "tags":{
@@ -7441,17 +7356,7 @@
                   ]
                },
                "photos":{
-                  "photo":[
-                     {
-                        "@attributes":{
-                           "id":"2",
-                           "name":"Tequila Sunrise - Original",
-                           "description":"none",
-                           "url":"http:\/\/www.cocktailberater.de\/img\/recipes\/2.jpg",
-                           "originalFileName":"2_original.jpg",
-                           "photoCategory":"1"
-                        }
-                     },
+                  "photo":
                      {
                         "@attributes":{
                            "id":"66",
@@ -7462,7 +7367,6 @@
                            "photoCategory":"1"
                         }
                      }
-                  ]
                },
                "videos":{
                   "video":{
@@ -7589,17 +7493,7 @@
                   ]
                },
                "photos":{
-                  "photo":[
-                     {
-                        "@attributes":{
-                           "id":"2",
-                           "name":"Tequila Sunrise - Original",
-                           "description":"none",
-                           "url":"http:\/\/www.cocktailberater.de\/img\/recipes\/2.jpg",
-                           "originalFileName":"2_original.jpg",
-                           "photoCategory":"1"
-                        }
-                     },
+                  "photo":
                      {
                         "@attributes":{
                            "id":"66",
@@ -7610,7 +7504,6 @@
                            "photoCategory":"1"
                         }
                      }
-                  ]
                },
                "videos":{
                   "video":{
@@ -7864,17 +7757,7 @@
                   ]
                },
                "photos":{
-                  "photo":[
-                     {
-                        "@attributes":{
-                           "id":"45",
-                           "name":"White Russian",
-                           "description":"",
-                           "url":"http:\/\/www.cocktailberater.de\/img\/recipes\/white-russian.jpg",
-                           "originalFileName":"iStock_000004055874XSmall-white-russian.jpg",
-                           "photoCategory":"1"
-                        }
-                     },
+                  "photo":
                      {
                         "@attributes":{
                            "id":"61",
@@ -7885,7 +7768,6 @@
                            "photoCategory":"1"
                         }
                      }
-                  ]
                },
                "videos":"",
                "tags":{

@@ -83,7 +83,7 @@ label:hover {
 
 /* line 1, ../patterns/organisms/header/scss/_header.scss */
 .header {
-  background: linear-gradient(to bottom, #310436 60%, #61056c 100%);
+  background: linear-gradient(to bottom, #0c2700 50%, #9b9126 100%);
   height: 100px;
   width: 400vw;
   color: white;
@@ -106,37 +106,38 @@ label:hover {
   padding: 10px;
   display: inline-block;
   border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 3px 3px 0 0;
 }
-/* line 13, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 14, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category:nth-of-type(1):checked ~ .main {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
-/* line 20, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 21, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category:nth-of-type(2):checked ~ .main {
   -webkit-transform: translate3d(-100vw, 0, 0);
           transform: translate3d(-100vw, 0, 0);
 }
-/* line 27, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 28, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category:nth-of-type(3):checked ~ .main {
   -webkit-transform: translate3d(-200vw, 0, 0);
           transform: translate3d(-200vw, 0, 0);
 }
-/* line 34, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 35, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category:nth-of-type(4):checked ~ .main {
   -webkit-transform: translate3d(-300vw, 0, 0);
           transform: translate3d(-300vw, 0, 0);
 }
 
-/* line 40, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 41, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 input.menu-category {
   position: absolute;
   z-index: -1;
 }
-/* line 46, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+/* line 47, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 input.menu-category:checked + label, input.menu-category:focus + label {
   background: white;
-  color: #310436;
+  color: #0c2700;
 }
 
 /* line 1, ../patterns/organisms/category-section/scss/_category-section.scss */
@@ -150,7 +151,7 @@ input.menu-category:checked + label, input.menu-category:focus + label {
 /* line 8, ../patterns/organisms/category-section/scss/_category-section.scss */
 .category-section__headline {
   padding: 5px 20px;
-  background: #61056c;
+  background: #9b9126;
   color: white;
 }
 
