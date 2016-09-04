@@ -157,6 +157,7 @@
         if (httpRequest.status === 200) {
           var data = JSON.parse(httpRequest.responseText);
           var recipes = data.rsp.recipes.recipe;
+          var ingredientsArray = [];
 
           document.getElementById('jsTeaserSpirituous').innerHTML = '';
           document.getElementById('jsTeaserNonAlc').innerHTML = '';
@@ -167,7 +168,9 @@
             for (var i = 0; i < components.length; i++) {
               var comp = components[i]['@attributes'];
               ingredientList += '<span class="teaser-section__unit">' + comp.amount + comp.unit + '</span> ' + comp.name + ', ';
+              if (ingredientsArray.indexOf(comp.name)==-1) ingredientsArray.push(comp.name);
             }
+            console.log(ingredientsArray);
             return ingredientList;
           };
 
@@ -178,9 +181,9 @@
             var difficulty = obj['@attributes'].difficulty || 'no data';
             var picture = obj.photos.photo['@attributes'].url || 'images/placeholder.svg';
             var name = obj['@attributes'].name || 'no data';
-            var description = obj['@attributes'].description || 'no data';
+            var description = obj['@attributes'].description || '-';
             var rating = obj['@attributes'].rating || 'no data';
-            var instructions = obj['@attributes'].instruction || 'no data';
+            var instructions = obj['@attributes'].instruction || '-';
 
             if (obj['@attributes'].isAlcoholic === '1') {
               articleTarget = document.getElementById('jsTeaserSpirituous');

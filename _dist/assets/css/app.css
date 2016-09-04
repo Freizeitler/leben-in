@@ -79,13 +79,14 @@ label:hover {
 .app {
   height: 100%;
   width: 100vw;
+  overflow: hidden;
 }
 
 /* line 1, ../patterns/organisms/header/scss/_header.scss */
 .header {
   background: linear-gradient(to bottom, #5f9748 50%, #aecd4e 100%);
   height: 100px;
-  width: 400vw;
+  width: 100vw;
   color: white;
   padding: 0 30px;
   position: absolute;
