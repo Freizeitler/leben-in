@@ -48,6 +48,16 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
           document.getElementById('jsTeaserSpirituous').innerHTML = '';
           document.getElementById('jsTeaserNonAlc').innerHTML = '';
 
+          var ingredients = function () {
+            var components = obj.components.component;
+            var ingredientList = '';
+            for (var i = 0; i < components.length; i++) {
+              var comp = components[i]['@attributes'];
+              ingredientList += '<span class="teaser-section__unit">' + comp.amount + comp.unit + '</span> ' + comp.name + ', ';
+            }
+            return ingredientList;
+          };
+
           for (var i = 0; i < recipes.length; i++) {
             var obj = recipes[i];
             //console.log(obj.photos.photo['@attributes'].url);
@@ -58,7 +68,6 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
             var description = obj['@attributes'].description || 'no data';
             var rating = obj['@attributes'].rating || 'no data';
             var instructions = obj['@attributes'].instruction || 'no data';
-            var ingredients = obj['@attributes'].ingedients || 'no data';
 
             if (obj['@attributes'].isAlcoholic === '1') {
               articleTarget = document.getElementById('jsTeaserSpirituous');
@@ -71,15 +80,16 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
               '<img class="teaser-section__image" width="150" height="150" src="' + picture + '" alt="" />' +
               '<div  class="teaser-section__text">' +
               '<h3>' + name + '</h3>' +
-              '<p>' + description + '</p>' +
-              '<p><strong>Rating;</strong> ' + rating + '</p>' +
+              '<dt>Ingredients:</dt>' +
+              '<dd>' + ingredients() + '</dd>' +
+              '<p><strong>Rating;</strong> ' + rating + ' / 5</p>' +
               '<input type="checkbox" class="teaser-section__more-button" name="learn-more' + i + '" id="learn-more' +i + '" />' +
               '<label for="learn-more'+ i + '">Learn more</label>' +
               '<dl class="teaser-section__more">' +
+              '<dt>Description:</dt>' +
+              '<dd>' + description + '</dd>' +
               '<dt>Instruction:</dt>' +
               '<dd>' + instructions + '</dd>' +
-              '<dt>ingredients:</dt>' +
-              '<dd>' + ingredients + '</dd>' +
               '</dl>' +
               '</div>' +
               '</article>'

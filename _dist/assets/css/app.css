@@ -83,7 +83,7 @@ label:hover {
 
 /* line 1, ../patterns/organisms/header/scss/_header.scss */
 .header {
-  background: linear-gradient(to bottom, #0c2700 50%, #9b9126 100%);
+  background: linear-gradient(to bottom, #5f9748 50%, #aecd4e 100%);
   height: 100px;
   width: 400vw;
   color: white;
@@ -137,7 +137,7 @@ input.menu-category {
 /* line 47, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 input.menu-category:checked + label, input.menu-category:focus + label {
   background: white;
-  color: #0c2700;
+  color: #5f9748;
 }
 
 /* line 1, ../patterns/organisms/category-section/scss/_category-section.scss */
@@ -151,7 +151,7 @@ input.menu-category:checked + label, input.menu-category:focus + label {
 /* line 8, ../patterns/organisms/category-section/scss/_category-section.scss */
 .category-section__headline {
   padding: 5px 20px;
-  background: #9b9126;
+  background: #aecd4e;
   color: white;
 }
 
@@ -189,15 +189,15 @@ input.menu-category:checked + label, input.menu-category:focus + label {
 .teaser-section__teaser {
   margin: 10px 0;
   padding: 20px 0;
-  border-top: 1px solid #e1e1e1;
-  border-bottom: 1px solid #e1e1e1;
+  border-top: 1px solid #f4f4f4;
+  border-bottom: 1px solid #f4f4f4;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   max-width: 1200px;
 }
 @media (min-width: 45.25em) {
   /* line 39, ../patterns/organisms/category-section/scss/_category-section.scss */
   .teaser-section__teaser {
-    border: 1px solid #e1e1e1;
+    border: 1px solid #f4f4f4;
     padding: 20px;
     border-radius: 96px 0 0 96px;
   }
@@ -239,10 +239,17 @@ input.menu-category:checked + label, input.menu-category:focus + label {
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 /* line 88, ../patterns/organisms/category-section/scss/_category-section.scss */
+.teaser-section__unit {
+  display: inline-block;
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+/* line 95, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section dt {
   font-weight: bold;
 }
-/* line 92, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 99, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section dd {
   margin-left: 0;
   margin-bottom: 1em;
