@@ -49,4 +49,11 @@ input.menu-category {
        color: $color-dark;
      }
    }
+
+   &:focus {
+     
+     & + label {
+       text-decoration: underline;
+     }
+   }
  }

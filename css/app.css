@@ -74,8 +74,16 @@ label:hover {
   display: -ms-flexbox;
   display: flex;
 }
+/* line 56, ../scss/_base.scss */
+.main input {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  bottom: -5px;
+  background: none;
+}
 
-/* line 57, ../scss/_base.scss */
+/* line 65, ../scss/_base.scss */
 .app {
   height: 100%;
   width: 100vw;
@@ -139,6 +147,10 @@ input.menu-category {
 input.menu-category:checked + label, input.menu-category:focus + label {
   background: white;
   color: #5f9748;
+}
+/* line 55, ../patterns/organisms/menu-category/scss/_menu-category.scss */
+input.menu-category:focus + label {
+  text-decoration: underline;
 }
 
 /* line 1, ../patterns/organisms/category-section/scss/_category-section.scss */
