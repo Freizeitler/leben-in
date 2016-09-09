@@ -1,20 +1,135 @@
----
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title itemprop="name">A-K Catalog</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style type="text/css">
 
-title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
+		</style>
+  	<link rel="stylesheet" href="./assets/css/app.css">
+	</head>
+	<body>
 
----
 
-{{ organism "header" }}
+	
+
+<header class="header" role="banner">
+  <h1 class="header__headline"><span>Welcome&hellip; It's</span> Cocktail O'Clock</h1>
+</header>
+
 
 <div class="app" role="tablist">
 
-  {{ organism "menu-category" }}
+  <input type="radio" name="category" id="category01" class="menu-category" checked autofocus role="tab" />
+<label for="category01" class="menu-category">Spirituous</label>
+<input type="radio" name="category" id="category02" class="menu-category" role="tab" />
+<label for="category02" class="menu-category">Non-alcoholic</label>
 
-  {{ organism "message" }}
+
+  <section class="message" id="jsMessage">
+  <p class="message__text">Actualising<span class="message__waiting">...</span> <span id="jsStatus" class="message__status">Sorry, I need JavaScript!</span></p>
+</section>
+
 
   <main class="main" role="main">
 
-    {{ organism "category-section" }}
+    <section class="category-section category-section__01" id="jsSection1">
+  <h2 class="category-section__headline">Adult drinks</h2>
+
+  <input type="checkbox" name="category01-filter" id="category01-filter01" class="menu-category-filter" data-filter="one" />
+  <label for="category01-filter01">Beginner</label>
+  <input type="checkbox" name="category01-filter" id="category01-filter02"  class="menu-category-filter" data-filter="two" />
+  <label for="category01-filter02">Advanced</label>
+
+  <div class="teaser-section" id="jsTeaserSpirituous">
+
+    <article class="teaser-section__teaser" data-tag="one" data-id="1" data-offline>
+      <img class="teaser-section__image" width="150" height="150" src="http://placehold.it/150x150" alt="" />
+      <div  class="teaser-section__text">
+        <h3>Name</h3>
+        <p>Dies ist das Originalrezept des Pi\u00f1a Colada.</p>
+        <p><strong>Rating;</strong> 3.5</p>
+        <input type="checkbox" class="teaser-section__more-button" name="learn-more1" id="learn-more1" />
+        <label for="learn-more1">Learn more</label>
+        <dl class="teaser-section__more">
+          <dt>Instruction:</dt>
+          <dd>Alle Zutaten mit gesto\u00dfenem Eis in einen Blender geben und anschlie\u00dfend in einem gro\u00dfen Tumbler servieren.</dd>
+          <dt>ingredients:</dt>
+          <dd>Rum (wei\u00df), Ananassaft, Cream of Coconut, Chrushed Ice</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="teaser-section__teaser" data-tag="one" data-id="1" data-offline>
+      <img class="teaser-section__image" width="150" height="150" src="http://placehold.it/150x150" alt="" />
+      <div  class="teaser-section__text">
+        <h3>Name</h3>
+        <p>Dies ist das Originalrezept des Pi\u00f1a Colada.</p>
+        <p><strong>Rating;</strong> 3.5</p>
+        <input type="checkbox" class="teaser-section__more-button" name="learn-more1" id="learn-more1" />
+        <label for="learn-more1">Learn more</label>
+        <dl class="teaser-section__more">
+          <dt>Instruction:</dt>
+          <dd>Alle Zutaten mit gesto\u00dfenem Eis in einen Blender geben und anschlie\u00dfend in einem gro\u00dfen Tumbler servieren.</dd>
+          <dt>ingredients:</dt>
+          <dd>Rum (wei\u00df), Ananassaft, Cream of Coconut, Chrushed Ice</dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="teaser-section__teaser" data-tag="one" data-id="1" data-offline>
+      <img class="teaser-section__image" width="150" height="150" src="http://placehold.it/150x150" alt="" />
+      <div  class="teaser-section__text">
+        <h3>Name</h3>
+        <p>Dies ist das Originalrezept des Pi\u00f1a Colada.</p>
+        <p><strong>Rating;</strong> 3.5</p>
+        <input type="checkbox" class="teaser-section__more-button" name="learn-more1" id="learn-more1" />
+        <label for="learn-more1">Learn more</label>
+        <dl class="teaser-section__more">
+          <dt>Instruction:</dt>
+          <dd>Alle Zutaten mit gesto\u00dfenem Eis in einen Blender geben und anschlie\u00dfend in einem gro\u00dfen Tumbler servieren.</dd>
+          <dt>ingredients:</dt>
+          <dd>Rum (wei\u00df), Ananassaft, Cream of Coconut, Chrushed Ice</dd>
+        </dl>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<section class="category-section category-section__02" id="jsSection2">
+  <h2 class="category-section__headline">Soft drinks</h2>
+  
+  <input type="checkbox" name="category02-filter" id="category02-filter01" class="menu-category-filter" data-filter="one" />
+  <label for="category02-filter01">Beginner</label>
+  <input type="checkbox" name="category02-filter"id="category02-filter02"  class="menu-category-filter" data-filter="two" />
+  <label for="category02-filter02">Advanced</label>
+
+  <div class="teaser-section" id="jsTeaserNonAlc">
+
+    <article class="teaser-section__teaser" data-tag="one" data-id="1" data-offline>
+      <img class="teaser-section__image" width="150" height="150" src="http://placehold.it/150x150" alt="" />
+      <div  class="teaser-section__text">
+        <h3>Name</h3>
+        <p>Dies ist das Originalrezept des Pi\u00f1a Colada.</p>
+        <p><strong>Rating;</strong> 3.5</p>
+        <input type="checkbox" class="teaser-section__more-button" name="learn-more1" id="learn-more1" />
+        <label for="learn-more1">Learn more</label>
+        <dl class="teaser-section__more">
+          <dt>Instruction:</dt>
+          <dd>Alle Zutaten mit gesto\u00dfenem Eis in einen Blender geben und anschlie\u00dfend in einem gro\u00dfen Tumbler servieren.</dd>
+          <dt>ingredients:</dt>
+          <dd>Rum (wei\u00df), Ananassaft, Cream of Coconut, Chrushed Ice</dd>
+        </dl>
+      </div>
+    </article>
+
+  </div>
+</section>
+
 
   </main>
 </div>
@@ -206,3 +321,9 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
     };
   })();
 </script>
+
+
+	</body>
+</html>
+
+

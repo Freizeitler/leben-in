@@ -42,7 +42,6 @@ bower_components
 _site
 _draft
 .sass-cache
-_dist
 
 # Files to ignore
 _README.md

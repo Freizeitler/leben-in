@@ -1,0 +1,112 @@
+.category-section {
+  height: 100%;
+  width: 100vw;
+  overflow-y: auto;
+  padding-bottom: 90px;
+  box-sizing: border-box;
+
+  &__headline {
+    padding: 5px $spacing-hard;
+    background: $color-gray;
+    color: $color-light;
+  }
+}
+
+.menu-category-filter {
+  margin: $spacing-hard 0 0 $spacing-hard;
+
+  &:checked  ~ .teaser-section .teaser-section__teaser {
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+  }
+
+  &[data-filter=one]:checked ~ .teaser-section .teaser-section__teaser[data-tag=beginner], &[data-filter=two]:checked ~ .teaser-section .teaser-section__teaser[data-tag=advanced], &[data-filter=three]:checked ~ .teaser-section .teaser-section__teaser[data-tag=profi] {
+    max-height: 400px;
+    opacity: 1;
+    margin: $spacing-hard/2 0;
+    padding: $spacing-hard;
+
+  }
+}
+
+.teaser-section {
+  display: flex;
+  flex-direction: column;
+  margin: $spacing-hard;
+  overflow: hidden;
+
+  &__teaser {
+    margin: $spacing-hard/2 0;
+    padding: $spacing-hard 0;
+    border-top: 1px solid $color-gray-light;
+    border-bottom: 1px solid $color-gray-light;
+    transition: all 0.3s cubic-bezier(0.175,  0.885, 0.320, 1.275);
+    max-width: 1200px;
+
+    @media (min-width: $breakpoint-medium) {
+      border: 1px solid $color-gray-light;
+      padding: $spacing-hard;
+      border-radius: 96px 0 0 96px;
+    }
+
+    &[aria-hidden=true] {
+
+      .teaser-section__more-button {
+        display: none;
+      }
+    }
+  }
+
+  &__text {
+    padding-left: $spacing-hard;
+  }
+
+  &__image {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    max-width: 100%;
+    float: left;
+    margin-right: $spacing-hard;
+
+    @media (min-width: $breakpoint-medium) {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  &__more-button {
+    clear: left;
+
+    &:checked ~ .teaser-section__more {
+      max-height: 400px;
+      margin-top: 1em;
+    }
+  }
+
+  &__more {
+    max-height: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.175,  0.885, 0.320, 1.275);
+  }
+
+  &__unit {
+    display: inline-block;
+    background-color: $color-gray-light;
+    padding: 2px 4px;
+    border-radius: 2px;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin-left: 0;
+    margin-bottom: 1em;
+  }
+
+}
