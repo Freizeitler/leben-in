@@ -173,14 +173,16 @@
 </div>
 
 <script type="text/javascript">
-  // template enigine
+  // template engine
   (function() {
     'use strict';
     var httpRequest;
     var targetMessage = document.getElementById('jsMessage');
 
     targetMessage.classList.add('hide');
-    function makeRequest(url) {
+
+    // make request
+    function makeRequest(url, callback) {
       httpRequest = new XMLHttpRequest();
 
       if (!httpRequest) {
@@ -188,68 +190,109 @@
         document.getElementById('jsStatus').textContent = 'Sorry, I need a connection!';
         return false;
       }
-      httpRequest.onreadystatechange = generateContents;
+      httpRequest.onreadystatechange = callback;
       httpRequest.open('GET', url);
       httpRequest.send();
+    }
+
+    // insert teaser template
+    function insertTemplate(articleTarget, dataset, datasetDetails, i) {
+      articleTarget.insertAdjacentHTML('beforeend',
+        '<article class="teaser-section__teaser" data-tag="' + dataset.id + '" data-id="' + dataset.id + '">' +
+        '<img class="teaser-section__image" width="150" height="150" src="' + dataset.thumb + '" alt="" />' +
+        '<div  class="teaser-section__text">' +
+        '<h3>' + dataset.title + '</h3>' +
+        /*'<dt>Ingredients:</dt>' +
+        '<dd>' + ingredients() + '</dd>' +
+        '<p><strong>Rating;</strong> ' + rating + ' / 5</p>' +*/
+        '<input type="checkbox" class="teaser-section__more-button" name="learn-more' + i + '" id="learn-more' +i + '" />' +
+        '<label for="learn-more'+ i + '">Learn more</label>' +
+        '<dl class="teaser-section__more">' +
+        '<dt>Description:</dt>' +
+        '<dd>' + dataset.description + '</dd>' +
+        '<dt>Details:</dt>' +
+        '<dd>' + dataset.infoUrl + '</dd>' +
+        '</dl>' +
+        '</div>' +
+        '</article>'
+      );
+    }
+
+    function fetchDetails(infoUrl) {
+      /*var detailUrl = 'https://www.krefeld.de/' + infoUrl;*/
+      var detailUrl = '../data/data-detail-offline.json';
+      var datasetDetails;
+      var httpRequestDetail;
+
+      function makeRequestDetails(detailUrl) {
+        httpRequestDetail = new XMLHttpRequest();
+
+        if (!httpRequestDetail) {
+          alert('Giving up :( Cannot create an XMLHTTP instance');
+          return false;
+        }
+        httpRequestDetail.onreadystatechange = detailContent;
+        httpRequestDetail.open('GET', detailUrl);
+        httpRequestDetail.send();
+      }
+
+      function detailContent() {
+        if (httpRequestDetail.readyState === XMLHttpRequest.DONE) {
+          if (httpRequestDetail.status === 200) {
+
+              var details = JSON.parse(httpRequestDetail.responseText);
+              var datasetDetails = {
+
+              };
+          } else {
+            alert('There was a problem with the request.');
+          }
+        }
+      }
+      return datasetDetails;
     }
 
     function generateContents() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
           var data = JSON.parse(httpRequest.responseText);
-          var recipes = data.rsp.recipes.recipe;
-          //var ingredientsArray = [];
 
           document.getElementById('jsTeaserSpirituous').innerHTML = '';
           document.getElementById('jsTeaserNonAlc').innerHTML = '';
 
-          var ingredients = function () {
+          // iterate over array
+          /*var ingredients = function () {
             var components = obj.components.component;
             var ingredientList = '';
             for (var i = 0; i < components.length; i++) {
               var comp = components[i]['@attributes'];
               ingredientList += '<span class="teaser-section__unit">' + comp.amount + comp.unit + '</span> ' + comp.name + ', ';
-              //if (ingredientsArray.indexOf(comp.name)==-1) ingredientsArray.push(comp.name);
             }
-            //console.log(ingredientsArray);
             return ingredientList;
-          };
+          };*/
 
-          for (var i = 0; i < recipes.length; i++) {
-            var obj = recipes[i];
-            var articleTarget;
-            var difficulty = obj['@attributes'].difficulty || 'no data';
-            var picture = obj.photos.photo['@attributes'].url || 'images/placeholder.svg';
-            var name = obj['@attributes'].name || 'no data';
-            var description = obj['@attributes'].description || '-';
-            var rating = obj['@attributes'].rating || 'no data';
-            var instructions = obj['@attributes'].instruction || '-';
 
-            if (obj['@attributes'].isAlcoholic === '1') {
+          for (var i = 0; i < data.length; i++) {
+            var dataset = {
+              id: data[i]['@unid'],
+              startdate: data[i].Start || 'no data',
+              enddate: data[i].End || 'no data',
+              title: data[i].DocName || '-',
+              subtitle: data[i].EventSubTitle || '-',
+              description: data[i].Kurztext || '-',
+              infoUrl: data[i].URL || '#',
+              thumb: data[i].Thumb || ''
+            };
+            var datasetDetails;
+            var articleTarget = document.getElementById('jsTeaserSpirituous');
+            fetchDetails(dataset.infoUrl) ;
+            insertTemplate(articleTarget, dataset, datasetDetails, i);
+
+            /*if (obj['@attributes'].isAlcoholic === '1') {
               articleTarget = document.getElementById('jsTeaserSpirituous');
             } else {
               articleTarget = document.getElementById('jsTeaserNonAlc');
-            }
-
-            articleTarget.insertAdjacentHTML('beforeend',
-              '<article class="teaser-section__teaser" data-tag="' + difficulty + '" data-id="' + i + '">' +
-              '<img class="teaser-section__image" width="150" height="150" src="' + picture + '" alt="" />' +
-              '<div  class="teaser-section__text">' +
-              '<h3>' + name + '</h3>' +
-              '<dt>Ingredients:</dt>' +
-              '<dd>' + ingredients() + '</dd>' +
-              '<p><strong>Rating;</strong> ' + rating + ' / 5</p>' +
-              '<input type="checkbox" class="teaser-section__more-button" name="learn-more' + i + '" id="learn-more' +i + '" />' +
-              '<label for="learn-more'+ i + '">Learn more</label>' +
-              '<dl class="teaser-section__more">' +
-              '<dt>Description:</dt>' +
-              '<dd>' + description + '</dd>' +
-              '<dt>Instruction:</dt>' +
-              '<dd>' + instructions + '</dd>' +
-              '</dl>' +
-              '</div>' +
-              '</article>'
-            );
+            }*/
           }
           targetMessage.classList.add('hide');
 
@@ -260,7 +303,8 @@
         }
       }
     }
-    makeRequest('../data/data-offline.json');
+    //makeRequest('https://www.krefeld.de/www_familie/event.nsf/apijson.xsp/view-event-month?compact=false');
+    makeRequest('../data/data-offline.json', generateContents);
   })();
 
   // accessibility
