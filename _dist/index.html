@@ -164,9 +164,7 @@
         '<img class="teaser-section__image" width="150" height="150" src="' + dataset.thumb + '" alt="" />' +
         '<div  class="teaser-section__text">' +
         '<h3>' + dataset.title + '</h3>' +
-        /*'<dt>Ingredients:</dt>' +
-        '<dd>' + ingredients() + '</dd>' +
-        '<p><strong>Rating;</strong> ' + rating + ' / 5</p>' +*/
+        '<p><strong>Von</strong> ' + datasetDetails.startdate + ' <strong>bis</strong>' + datasetDetails.enddate +
         '<input type="checkbox" class="teaser-section__more-button" name="learn-more' + i + '" id="learn-more' +i + '" />' +
         '<label for="learn-more'+ i + '">Learn more</label>' +
         '<dl class="teaser-section__more">' +
@@ -180,10 +178,9 @@
       );
     }
 
-    function fetchDetails(infoUrl) {
-      /*var detailUrl = 'https://www.krefeld.de/' + infoUrl;*/
+    function fetchDetails(articleTarget, dataset, i) {
+      /*var detailUrl = 'https://www.krefeld.de/' + dataset.infoUrl;*/
       var detailUrl = '../data/data-detail-offline.json';
-      var datasetDetails;
       var httpRequestDetail;
 
       function makeRequestDetails(detailUrl) {
@@ -193,31 +190,36 @@
           alert('Giving up :( Cannot create an XMLHTTP instance');
           return false;
         }
-        httpRequestDetail.onreadystatechange = detailContent;
+        httpRequestDetail.onreadystatechange = detailContent(articleTarget, dataset);
         httpRequestDetail.open('GET', detailUrl);
         httpRequestDetail.send();
       }
 
-      function detailContent() {
+      function detailContent(articleTarget, dataset) {
         if (httpRequestDetail.readyState === XMLHttpRequest.DONE) {
           if (httpRequestDetail.status === 200) {
 
               var details = JSON.parse(httpRequestDetail.responseText);
               var datasetDetails = {
-
+                startdate: details.Date1,
+                enddate: details.Date2
               };
+              console.log('detailContent: ' + articleTarget);
+              insertTemplate(articleTarget, dataset, datasetDetails, i);
           } else {
             alert('There was a problem with the request.');
           }
         }
       }
-      return datasetDetails;
+      makeRequestDetails(detailUrl);
     }
 
     function generateContents() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
           var data = JSON.parse(httpRequest.responseText);
+          var dataset;
+          var articleTarget = document.getElementById('jsTeaserSpirituous');
 
           document.getElementById('jsTeaserSpirituous').innerHTML = '';
           document.getElementById('jsTeaserNonAlc').innerHTML = '';
@@ -233,9 +235,8 @@
             return ingredientList;
           };*/
 
-
           for (var i = 0; i < data.length; i++) {
-            var dataset = {
+            dataset = {
               id: data[i]['@unid'],
               startdate: data[i].Start || 'no data',
               enddate: data[i].End || 'no data',
@@ -245,10 +246,8 @@
               infoUrl: data[i].URL || '#',
               thumb: data[i].Thumb || ''
             };
-            var datasetDetails;
-            var articleTarget = document.getElementById('jsTeaserSpirituous');
-            fetchDetails(dataset.infoUrl) ;
-            insertTemplate(articleTarget, dataset, datasetDetails, i);
+            //console.log(dataset);
+            setTimeout(fetchDetails(articleTarget, dataset, i), 100);
 
             /*if (obj['@attributes'].isAlcoholic === '1') {
               articleTarget = document.getElementById('jsTeaserSpirituous');
