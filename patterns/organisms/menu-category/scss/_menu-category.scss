@@ -1,5 +1,5 @@
 .menu-category {
-  color: $color-light;
+  color: #fff;
   margin-top: $spacing-hard * 3;
   margin-left: $spacing-hard;
   position: relative;
@@ -45,13 +45,13 @@ input.menu-category {
    &:checked, &:focus {
 
      & + label {
-       background: $color-light;
+       background: #fff;
        color: $color-dark;
      }
    }
 
    &:focus {
-     
+
      & + label {
        text-decoration: underline;
      }

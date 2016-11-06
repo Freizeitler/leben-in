@@ -6,13 +6,11 @@
 * @dependency none
 */
 
-// Colors (take naming ideas from http://chir.ag/projects/name-that-color/)
 $color-default: rgb(30,30,30);
-$color-dark: rgba(95, 151, 72, 1);
-$color-light: rgba(203, 220, 223, 1);
-$color-gray: rgba(174, 205, 78, 1);
+$color-dark: rgba(33, 83, 142, 1);
+$color-light: rgba(228, 234, 241, 1);
+$color-gray: rgba(122, 152, 187, 1);
 $color-gray-light: rgba(244, 244, 244, 1);
-$color-light: rgba(255, 255, 255, 1);
 $color-error: rgba(108, 5, 5, 1);
 
 // Fonts

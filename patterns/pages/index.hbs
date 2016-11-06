@@ -1,6 +1,6 @@
 ---
 
-title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
+title: "Leben in Krefeld"
 
 ---
 
@@ -43,19 +43,18 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
     }
 
     // insert teaser template
-    function insertTemplate(articleTarget, dataset, datasetDetails, i) {
+    function insertTemplate(articleTarget, dataset, i) {
       articleTarget.insertAdjacentHTML('beforeend',
         '<article class="teaser-section__teaser" data-tag="' + dataset.id + '" data-id="' + dataset.id + '">' +
-        '<img class="teaser-section__image" width="150" height="150" src="' + dataset.thumb + '" alt="" />' +
+        setImage(dataset) +
         '<div  class="teaser-section__text">' +
-        '<h3>' + dataset.title + '</h3>' +
-        '<p><strong>Von</strong> ' + datasetDetails.startdate + ' <strong>bis</strong>' + datasetDetails.enddate +
-        '<input type="checkbox" class="teaser-section__more-button" name="learn-more' + i + '" id="learn-more' +i + '" />' +
-        '<label for="learn-more'+ i + '">Learn more</label>' +
+        '<h3 class="teaser-section__headline">' + dataset.title + '</h3>' +
+        formatDate(dataset) +
+        '<p>' + dataset.description + '</p>' +
+        '<label for="learn-more'+ i + '" class="js-more-details"><input type="checkbox" class="teaser-section__more-button" name="learn-more' + i + '" id="learn-more' +i + '" /> Mehr darüber</label>' +
         '<dl class="teaser-section__more">' +
-        '<dt>Description:</dt>' +
-        '<dd>' + dataset.description + '</dd>' +
-        '<dt>Details:</dt>' +
+        // more details here:
+        '<dt>Weitere Infos:</dt>' +
         '<dd>' + dataset.infoUrl + '</dd>' +
         '</dl>' +
         '</div>' +
@@ -63,40 +62,60 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
       );
     }
 
-    function fetchDetails(articleTarget, dataset, i) {
-      /*var detailUrl = 'https://www.krefeld.de/' + dataset.infoUrl;*/
+    function setImage(dataset) {
+      if (dataset.thumb === '') {
+        return (
+          '<svg class="teaser-section__image teaser-section__icon-smiley" height="150" width="150"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-smiley"></use></svg>'
+        )
+      } else {
+        return (
+          '<img class="teaser-section__image" width="150" height="150" src="' + dataset.thumb + '" alt="" />'
+        )
+      }
+    }
+
+    function formatDate(dataset) {
+      var newDate;
+      var startDateRaw = dataset.startDate;
+      var endDateRaw = dataset.endDate;
+      var startDate;
+      var endDate;
+
+      if (startDateRaw !== 'unbekannt') {
+        var tempDateStart = startDateRaw.split('-');
+        var tempDateDayStart = tempDateStart[2].split('T');
+        startDate = tempDateDayStart[0] + '.' + tempDateStart[1] + '.' + tempDateStart[0];
+      } else {
+        startDate = '(keine Angabe)';
+      }
+
+      if (endDateRaw !== 'unbekannt') {
+        var tempDateEnd = endDateRaw.split('-');
+        var tempDateDayEnd = tempDateEnd[2].split('T');
+        endDate = tempDateDayEnd[0] + '.' + tempDateEnd[1] + '.' + tempDateEnd[0];
+        newDate = '<p>Vom <strong>' + startDate + '</strong> bis <strong>' + endDate + '</strong></p>';
+      } else {
+        newDate = '<p>Am <strong>' + startDate + '</strong></p>';
+      }
+      return newDate;
+    }
+
+    // TODO: fetch and generate Details
+    function generateDetails(i) {
       var detailUrl = '../data/data-detail-offline.json';
-      var httpRequestDetail;
+      if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+          var data = JSON.parse(httpRequest.responseText);
+          var dataset;
 
-      function makeRequestDetails(detailUrl) {
-        httpRequestDetail = new XMLHttpRequest();
+          console.log(dataset);
 
-        if (!httpRequestDetail) {
-          alert('Giving up :( Cannot create an XMLHTTP instance');
+        } else {
+          targetMessage.classList.remove('hide');
+          document.getElementById('jsStatus').textContent = 'Ich brauche JavaScript!';
           return false;
         }
-        httpRequestDetail.onreadystatechange = detailContent(articleTarget, dataset);
-        httpRequestDetail.open('GET', detailUrl);
-        httpRequestDetail.send();
       }
-
-      function detailContent(articleTarget, dataset) {
-        if (httpRequestDetail.readyState === XMLHttpRequest.DONE) {
-          if (httpRequestDetail.status === 200) {
-
-              var details = JSON.parse(httpRequestDetail.responseText);
-              var datasetDetails = {
-                startdate: details.Date1,
-                enddate: details.Date2
-              };
-              console.log('detailContent: ' + articleTarget);
-              insertTemplate(articleTarget, dataset, datasetDetails, i);
-          } else {
-            alert('There was a problem with the request.');
-          }
-        }
-      }
-      makeRequestDetails(detailUrl);
     }
 
     function generateContents() {
@@ -109,17 +128,6 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
           document.getElementById('jsTeaserSpirituous').innerHTML = '';
           document.getElementById('jsTeaserNonAlc').innerHTML = '';
 
-          // iterate over array
-          /*var ingredients = function () {
-            var components = obj.components.component;
-            var ingredientList = '';
-            for (var i = 0; i < components.length; i++) {
-              var comp = components[i]['@attributes'];
-              ingredientList += '<span class="teaser-section__unit">' + comp.amount + comp.unit + '</span> ' + comp.name + ', ';
-            }
-            return ingredientList;
-          };*/
-
           for (var i = 0; i < data.length; i++) {
             dataset = {
               id: data[i]['@unid'],
@@ -129,29 +137,35 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
               subtitle: data[i].EventSubTitle || '-',
               description: data[i].Kurztext || '-',
               infoUrl: data[i].URL || '#',
-              thumb: data[i].Thumb || ''
+              thumb:  data[i].Thumb,
+              startDate: data[i].Start || 'unbekannt',
+              endDate: data[i].End || 'unbekannt'
             };
-            //console.log(dataset);
-            setTimeout(fetchDetails(articleTarget, dataset, i), 100);
-
-            /*if (obj['@attributes'].isAlcoholic === '1') {
-              articleTarget = document.getElementById('jsTeaserSpirituous');
-            } else {
-              articleTarget = document.getElementById('jsTeaserNonAlc');
-            }*/
+            insertTemplate(articleTarget, dataset, i);
           }
           targetMessage.classList.add('hide');
 
         } else {
           targetMessage.classList.remove('hide');
-          document.getElementById('jsStatus').textContent = 'Sorry, I need a connection!';
+          document.getElementById('jsStatus').textContent = 'Ich habe leider keine Verbindung!';
           return false;
         }
       }
     }
     //makeRequest('https://www.krefeld.de/www_familie/event.nsf/apijson.xsp/view-event-month?compact=false');
     makeRequest('../data/data-offline.json', generateContents);
+
+    document.getElementsByClassName('js-more-details').onclick = function() {
+      console.log('checked');
+      if (this.checked) {
+        makeRequest(detailUrl, generateDetails);
+      }
+    };
   })();
+
+
+
+
 
   // accessibility
   (function() {
@@ -165,6 +179,10 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
     var filter2Cat1 = document.getElementById('category01-filter02');
     var filter1Cat2 = document.getElementById('category02-filter01');
     var filter2Cat2 = document.getElementById('category02-filter02');
+    var filterTag1Cat1 = section1.querySelectorAll('[data-tag="beginner"]');
+    var filterTag2Cat1 = section1.querySelectorAll('[data-tag="advanced"]');
+    var filterTag1Cat2 = section2.querySelectorAll('[data-tag="beginner"]');
+    var filterTag2Cat2 = section2.querySelectorAll('[data-tag="advanced"]');
 
     // initially set section2Inputs inactive
     var setInitialNotActive = function() {
@@ -198,8 +216,6 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
     };
 
     filter1Cat1.onchange = function() {
-      var filterTag1Cat1 = section1.querySelectorAll('[data-tag="beginner"]');
-      var filterTag2Cat1 = section1.querySelectorAll('[data-tag="advanced"]');
       if (this.checked) {
         for(var i=0; i<filterTag2Cat1.length; i++) {
           filterTag2Cat1[i].setAttribute('aria-hidden', 'true');
@@ -210,8 +226,6 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
       }
     };
     filter2Cat1.onchange = function() {
-      var filterTag1Cat1 = section1.querySelectorAll('[data-tag="beginner"]');
-      var filterTag2Cat1 = section1.querySelectorAll('[data-tag="advanced"]');
       if (this.checked) {
         for(var i=0; i<filterTag2Cat1.length; i++) {
           filterTag2Cat1[i].setAttribute('aria-hidden', 'false');
@@ -222,8 +236,6 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
       }
     };
     filter1Cat2.onchange = function() {
-      var filterTag1Cat2 = section2.querySelectorAll('[data-tag="beginner"]');
-      var filterTag2Cat2 = section2.querySelectorAll('[data-tag="advanced"]');
       if (this.checked) {
         for(var i=0; i<filterTag2Cat2.length; i++) {
           filterTag2Cat2[i].setAttribute('aria-hidden', 'true');
@@ -234,8 +246,6 @@ title: "<span>Welcome&hellip; It's</span> Cocktail O'Clock"
       }
     };
     filter2Cat2.onchange = function() {
-      var filterTag1Cat2 = section2.querySelectorAll('[data-tag="beginner"]');
-      var filterTag2Cat2 = section2.querySelectorAll('[data-tag="advanced"]');
       if (this.checked) {
         if (this.checked) {
           for(var i=0; i<filterTag2Cat2.length; i++) {

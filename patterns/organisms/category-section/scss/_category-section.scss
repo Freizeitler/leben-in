@@ -8,7 +8,7 @@
   &__headline {
     padding: 5px $spacing-hard;
     background: $color-gray;
-    color: $color-light;
+    color: #fff;
   }
 }
 
@@ -48,7 +48,7 @@
     @media (min-width: $breakpoint-medium) {
       border: 1px solid $color-gray-light;
       padding: $spacing-hard;
-      border-radius: 96px 0 0 96px;
+      border-radius: 96px 0 0 0;
     }
 
     &[aria-hidden=true] {
@@ -59,8 +59,9 @@
     }
   }
 
-  &__text {
-    padding-left: $spacing-hard;
+  &__headline {
+    color: $color-dark;
+    margin-bottom: $spacing-hard / 2;
   }
 
   &__image {
@@ -70,11 +71,16 @@
     max-width: 100%;
     float: left;
     margin-right: $spacing-hard;
+    margin-bottom: $spacing-hard;
 
     @media (min-width: $breakpoint-medium) {
       width: 150px;
       height: 150px;
     }
+  }
+
+  &__icon-smiley {
+    fill: $color-light;
   }
 
   &__more-button {

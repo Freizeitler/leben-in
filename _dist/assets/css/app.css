@@ -59,12 +59,30 @@ p {
   margin-top: 0;
 }
 
-/* line 45, ../scss/_base.scss */
+/* line 43, ../scss/_base.scss */
+strong {
+  color: #21538e;
+}
+
+/* line 47, ../scss/_base.scss */
+input[type=checkbox] {
+  background: #e4eaf1;
+  width: 30px;
+  height: 30px;
+  border: 4px solid #7a98bb;
+  box-sizing: border-box;
+  position: relative;
+  bottom: -12px;
+  -webkit-appearance: inherit;
+  border-radius: 3px;
+}
+
+/* line 61, ../scss/_base.scss */
 label:hover {
   cursor: pointer;
 }
 
-/* line 50, ../scss/_base.scss */
+/* line 66, ../scss/_base.scss */
 .main {
   min-width: 400vw;
   height: 100%;
@@ -74,16 +92,8 @@ label:hover {
   display: -ms-flexbox;
   display: flex;
 }
-/* line 56, ../scss/_base.scss */
-.main input {
-  width: 20px;
-  height: 20px;
-  position: relative;
-  bottom: -5px;
-  background: none;
-}
 
-/* line 65, ../scss/_base.scss */
+/* line 73, ../scss/_base.scss */
 .app {
   height: 100%;
   width: 100vw;
@@ -92,10 +102,10 @@ label:hover {
 
 /* line 1, ../patterns/organisms/header/scss/_header.scss */
 .header {
-  background: linear-gradient(to bottom, #5f9748 50%, #aecd4e 100%);
+  background: linear-gradient(to bottom, #21538e 50%, #7a98bb 100%);
   height: 100px;
   width: 100vw;
-  color: white;
+  color: #fff;
   padding: 0 30px;
   position: absolute;
   box-sizing: border-box;
@@ -107,7 +117,7 @@ label:hover {
 
 /* line 1, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 .menu-category {
-  color: white;
+  color: #fff;
   margin-top: 60px;
   margin-left: 20px;
   position: relative;
@@ -145,8 +155,8 @@ input.menu-category {
 }
 /* line 47, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 input.menu-category:checked + label, input.menu-category:focus + label {
-  background: white;
-  color: #5f9748;
+  background: #fff;
+  color: #21538e;
 }
 /* line 55, ../patterns/organisms/menu-category/scss/_menu-category.scss */
 input.menu-category:focus + label {
@@ -164,8 +174,8 @@ input.menu-category:focus + label {
 /* line 8, ../patterns/organisms/category-section/scss/_category-section.scss */
 .category-section__headline {
   padding: 5px 20px;
-  background: #aecd4e;
-  color: white;
+  background: #7a98bb;
+  color: #fff;
 }
 
 /* line 15, ../patterns/organisms/category-section/scss/_category-section.scss */
@@ -212,7 +222,7 @@ input.menu-category:focus + label {
   .teaser-section__teaser {
     border: 1px solid #f4f4f4;
     padding: 20px;
-    border-radius: 96px 0 0 96px;
+    border-radius: 96px 0 0 0;
   }
 }
 /* line 56, ../patterns/organisms/category-section/scss/_category-section.scss */
@@ -220,10 +230,11 @@ input.menu-category:focus + label {
   display: none;
 }
 /* line 62, ../patterns/organisms/category-section/scss/_category-section.scss */
-.teaser-section__text {
-  padding-left: 20px;
+.teaser-section__headline {
+  color: #21538e;
+  margin-bottom: 10px;
 }
-/* line 66, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 67, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__image {
   border-radius: 50%;
   width: 100px;
@@ -231,42 +242,47 @@ input.menu-category:focus + label {
   max-width: 100%;
   float: left;
   margin-right: 20px;
+  margin-bottom: 20px;
 }
 @media (min-width: 45.25em) {
-  /* line 66, ../patterns/organisms/category-section/scss/_category-section.scss */
+  /* line 67, ../patterns/organisms/category-section/scss/_category-section.scss */
   .teaser-section__image {
     width: 150px;
     height: 150px;
   }
 }
-/* line 80, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 82, ../patterns/organisms/category-section/scss/_category-section.scss */
+.teaser-section__icon-smiley {
+  fill: #e4eaf1;
+}
+/* line 86, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__more-button {
   clear: left;
 }
-/* line 83, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 89, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__more-button:checked ~ .teaser-section__more {
   max-height: 400px;
   margin-top: 1em;
 }
-/* line 89, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 95, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__more {
   max-height: 0;
   margin: 0;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-/* line 96, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 102, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section__unit {
   display: inline-block;
   background-color: #f4f4f4;
   padding: 2px 4px;
   border-radius: 2px;
 }
-/* line 103, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 109, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section dt {
   font-weight: bold;
 }
-/* line 107, ../patterns/organisms/category-section/scss/_category-section.scss */
+/* line 113, ../patterns/organisms/category-section/scss/_category-section.scss */
 .teaser-section dd {
   margin-left: 0;
   margin-bottom: 1em;
