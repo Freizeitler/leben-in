@@ -44,10 +44,13 @@
     border-bottom: 1px solid $color-gray-light;
     transition: all 0.3s cubic-bezier(0.175,  0.885, 0.320, 1.275);
     max-width: 1200px;
+    position: relative;
+    padding-bottom: $spacing-hard * 2;
 
     @media (min-width: $breakpoint-medium) {
       border: 1px solid $color-gray-light;
       padding: $spacing-hard;
+      padding-bottom: $spacing-hard * 2;
       border-radius: 96px 0 0 0;
     }
 
@@ -83,8 +86,27 @@
     fill: $color-light;
   }
 
-  &__more-button {
+  &__more-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    padding-right: 30px;
+    padding-left: 60px;
+    font-weight: bold;
+    padding-top: 4px;
+    background-color: #e4eaf1;
+    color: $color-dark;
+    height: 30px;
+    box-sizing: border-box;
+  }
+
+  &__more-button.teaser-section__more-button {
     clear: left;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
 
     &:checked ~ .teaser-section__more {
       max-height: 400px;
