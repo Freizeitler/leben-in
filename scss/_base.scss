@@ -44,7 +44,7 @@ strong {
   color: $color-dark;
 }
 
-input[type=checkbox] {
+input[type=checkbox], input[type=text] {
   background: $color-light;
   width: 30px;
   height: 30px;
@@ -54,6 +54,10 @@ input[type=checkbox] {
   bottom: -12px;
   -webkit-appearance: inherit;
   border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
 }
 
 label {
