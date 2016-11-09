@@ -46,6 +46,7 @@
   display: flex;
   flex-direction: column;
   margin: $spacing-hard;
+  margin-top: $spacing-hard*2;
   overflow: hidden;
 
   &__teaser {
