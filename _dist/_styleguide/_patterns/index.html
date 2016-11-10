@@ -78,7 +78,7 @@
 
   <div class="search-bar">
     <label for="serach"><strong>Ich suche etwas Bestimmtes&hellip;</strong></label><br>
-    <input type="text" class="search-bar__input" placeholder="z. B.: Theater" />
+    <input type="text" class="search-bar__input" id="search" placeholder="z. B.: Theater" value="" />
   </div>
 
   <strong class="category-section__filter-headline">Ergebnisse filtern nach&hellip;</strong>
@@ -216,7 +216,7 @@
         '<article class="teaser-section__teaser" data-tag="' + dataset.id + '" data-id="' + dataset.id + '">' +
         setImage(dataset) +
         '<div  class="teaser-section__text">' +
-        '<h3 class="teaser-section__headline">' + dataset.title + '</h3>' +
+        '<h3 class="teaser-section__headline search-content">' + dataset.title + '</h3>' +
         formatDate(dataset) +
         '<p class="teaser-section__description">' + dataset.description + '</p>' +
         '<label for="learn-more'+ i + '" class="teaser-section__more-label js-more-details"><input type="checkbox" class="teaser-section__more-button" name="learn-more' + i + '" id="learn-more' +i + '" /> Mehr darüber</label>' +
@@ -323,6 +323,25 @@
     //makeRequest('https://www.krefeld.de/www_familie/event.nsf/apijson.xsp/view-event-month?compact=false');
     makeRequest('../data/data-offline.json', generateContents);
 
+    // live search
+    function liveSearch() {
+      var search = document.getElementById('search');
+      console.log(search);
+      search.onkeyup = function () {
+          var filter = search.value.toUpperCase();
+          var lis = document.getElementsByTagName('article');
+          for (var i = 0; i < lis.length; i++) {
+              var name = lis[i].getElementsByClassName('search-content')[0].innerHTML;
+                console.log(name);
+              if (name.toUpperCase().indexOf(filter) == 0)
+                  lis[i].style.display = 'block';
+              else
+                  lis[i].style.display = 'none';
+          }
+        }
+      };
+    liveSearch();
+
     document.getElementsByClassName('js-more-details').onclick = function() {
       console.log('checked');
       if (this.checked) {
@@ -330,10 +349,6 @@
       }
     };
   })();
-
-
-
-
 
   // accessibility
   (function() {
