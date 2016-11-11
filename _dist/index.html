@@ -29,25 +29,21 @@
 
 
   <section class="message" id="jsMessage">
-  <p class="message__text">Actualising<span class="message__waiting">...</span> <span id="jsStatus" class="message__status">Sorry, I need JavaScript!</span></p>
+  <p class="message__text">Aktualisieren<span class="message__waiting">...</span> <span id="jsStatus" class="message__status">Sorry, I need JavaScript!</span></p>
 </section>
 
 
   <main class="main" role="main">
 
     <section class="category-section category-section__01" id="jsSection1">
-  <h2 class="category-section__headline">Familienveranstaltungen</h2>
+  <h2 class="category-section__headline">Familienveranstaltungen aktuell</h2>
 
   <div class="search-bar">
     <label for="serach"><strong>Ich suche etwas Bestimmtes&hellip;</strong></label><br>
     <input type="text" class="search-bar__input" id="search" placeholder="z. B.: Theater" value="" />
   </div>
 
-  <strong class="category-section__filter-headline">Ergebnisse filtern nach&hellip;</strong>
-  <input type="checkbox" name="category01-filter" id="category01-filter01" class="menu-category-filter" data-filter="one" />
-  <label for="category01-filter01">&hellip;</label>
-  <input type="checkbox" name="category01-filter" id="category01-filter02"  class="menu-category-filter" data-filter="two" />
-  <label for="category01-filter02">&hellip;</label>
+  
 
   <svg class="symbol-container" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
@@ -177,8 +173,9 @@
       articleTarget.insertAdjacentHTML('beforeend',
         '<article class="teaser-section__teaser" data-tag="' + dataset.id + '" data-id="' + dataset.id + '">' +
         setImage(dataset) +
-        '<div  class="teaser-section__text">' +
-        '<h3 class="teaser-section__headline search-content">' + dataset.title + '</h3>' +
+        '<div  class="teaser-section__text search-content">' +
+        '<h3 class="teaser-section__headline">' + dataset.title + '</h3>' +
+        '<p class="teaser-section__tags"><strong>Veranstaltung:</strong> <em>' + getTags(dataset) + '</em></p>' +
         formatDate(dataset) +
         '<p class="teaser-section__description">' + dataset.description + '</p>' +
         '<label for="learn-more'+ i + '" class="teaser-section__more-label js-more-details"><input type="checkbox" class="teaser-section__more-button" name="learn-more' + i + '" id="learn-more' +i + '" /> Mehr darüber</label>' +
@@ -191,6 +188,11 @@
         '</article>'
       );
     }
+
+    function getTags(dataset) {
+      var allTags = dataset.tags.toString();
+      return allTags;
+    };
 
     function setImage(dataset) {
       if (dataset.thumb === '') {
@@ -269,7 +271,8 @@
               infoUrl: data[i].URL || '#',
               thumb:  data[i].Thumb,
               startDate: data[i].Start || 'unbekannt',
-              endDate: data[i].End || 'unbekannt'
+              endDate: data[i].End || 'unbekannt',
+              tags: data[i].EventType || 'Keine Tags'
             };
             insertTemplate(articleTarget, dataset, i);
           }
@@ -288,16 +291,17 @@
     // live search
     function liveSearch() {
       var search = document.getElementById('search');
-      console.log(search);
       search.onkeyup = function () {
           var filter = search.value.toUpperCase();
           var lis = document.getElementsByTagName('article');
           for (var i = 0; i < lis.length; i++) {
-              var name = lis[i].getElementsByClassName('search-content')[0].innerHTML;
-              if (name.toUpperCase().indexOf(filter) > -1)
+              var target = lis[i].getElementsByClassName('search-content')[0];
+              var content = target.textContent;
+              if (content.toUpperCase().indexOf(filter) > -1) {
                   lis[i].style.display = 'block';
-              else
+              } else {
                   lis[i].style.display = 'none';
+                }
           }
         }
       };
