@@ -20,7 +20,11 @@ title: "Leben in Krefeld"
 </div>
 
 <script type="text/javascript">
-  // template engine
+
+
+  /** Generate templates
+  ***
+  **/
   (function() {
     'use strict';
     var httpRequest;
@@ -63,11 +67,19 @@ title: "Leben in Krefeld"
       );
     }
 
+
+    /** Get Tags for Search
+    ***
+    **/
     function getTags(dataset) {
       var allTags = dataset.tags.toString();
       return allTags;
     };
 
+
+    /** Choose Image or SVG
+    ***
+    **/
     function setImage(dataset) {
       if (dataset.thumb === '') {
         return (
@@ -80,6 +92,10 @@ title: "Leben in Krefeld"
       }
     }
 
+
+    /** Format ISO Date
+    ***
+    **/
     function formatDate(dataset) {
       var newDate;
       var startDateRaw = dataset.startDate;
@@ -107,7 +123,7 @@ title: "Leben in Krefeld"
     }
 
     // TODO: fetch and generate Details
-    function generateDetails(i) {
+    /*function generateDetails(i) {
       var detailUrl = '../data/data-detail-offline.json';
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
@@ -123,7 +139,18 @@ title: "Leben in Krefeld"
         }
       }
     }
+    // Fire Detail Request
+    document.getElementsByClassName('js-more-details').onclick = function() {
+      console.log('checked');
+      if (this.checked) {
+        makeRequest(detailUrl, generateDetails);
+      }
+    };*/
 
+
+    /** Generate Contents if Request is successful
+    ***
+    **/
     function generateContents() {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
@@ -159,10 +186,27 @@ title: "Leben in Krefeld"
         }
       }
     }
-    //makeRequest('https://www.krefeld.de/www_familie/event.nsf/apijson.xsp/view-event-month?compact=false');
-    makeRequest('../data/data-offline.json', generateContents);
 
-    // live search
+
+    /** Fire JSON Request
+    *** makeRequest('https://www.krefeld.de/www_familie/event.nsf/apijson.xsp/view-event-month?compact=false'); , makeRequest('../data/data-offline.json', generateContents);
+    **/
+    //callback function
+    function jsonpcallback(data) {
+        //do stuff with JSON
+        console.log(data);
+    }
+    //create HTML script tag
+    var script = document.createElement('script');
+    //script.src = "http://remote.domain.com/data/?callback=jsonpcallback&id=123"
+    script.src = "https://www.krefeld.de/www_familie/event.nsf/apijson.xsp/view-event-month?compact=false&callback=jsonpcallback&id=123"
+    //inject script tag into head
+    document.getElementsByTagName('head')[0].appendChild(script);
+
+
+    /** Live Search Logic
+    ***
+    **/
     function liveSearch() {
       var search = document.getElementById('search');
       search.onkeyup = function () {
@@ -181,15 +225,12 @@ title: "Leben in Krefeld"
       };
     liveSearch();
 
-    document.getElementsByClassName('js-more-details').onclick = function() {
-      console.log('checked');
-      if (this.checked) {
-        makeRequest(detailUrl, generateDetails);
-      }
-    };
   })();
 
-  // accessibility
+
+  /** Accessibility
+  ***
+  **/
   (function() {
     var section1 = document.getElementById('jsSection1');
     var section2 = document.getElementById('jsSection2');
